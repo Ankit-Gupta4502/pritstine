@@ -32,7 +32,7 @@ const getCategoryDetail = async (slug) => {
 const Page = async ({ params }) => {
   const { data } = await getCategoryDetail(params.category)
   const currlang = cookies().get("lang")?.value || "en"
-  console.log(data, "dataaaaa");
+  console.log(data, "https://pristine.amazonpro.in/api/all_services");
   const formateText = () => {
     return <StyledText>
       <h2 className="text-secondary hero-text xl:text-[3rem] leading-9 md:leading-[52px]    lg:text-[3rem] pb-5 text-[2rem] font-semibold" dangerouslySetInnerHTML={{ __html: data?.title || "" }} />
@@ -63,11 +63,12 @@ const Page = async ({ params }) => {
       <FreeConsult subTitle={data?.content2} />
       <Services categorySlug={params.category} services={data?.service || []} />
       <WhyChooseUs
+      
         img1={data?.content3_image1?.image ?
           `/basepath/${data?.content3_image1?.image}` : ""}
         img2={ `/basepath/${data?.content3_image2?.image}` }
 
-        bulletPoints={data?.content3_bullet_Pnt ? JSON.parse(data?.content3_bullet_Pnt) : []} desc={data?.content3_conclusion} title={data?.content3_title} />
+        bulletPoints={data?.content3_bullet_Pnt ? JSON.parse(data?.content3_bullet_Pnt) : []} desc={data?.content3_intro} title={data?.content3_title} />
       <SignUp />
 
     </>
