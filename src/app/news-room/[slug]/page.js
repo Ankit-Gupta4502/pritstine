@@ -54,6 +54,9 @@ const Page = async ({ params }) => {
     }
     else false
   }
+  const filteredArticles = () => {
+    return (Array.isArray(relatedArticles) ? relatedArticles : []).filter((it) => it.slug !== params.slug).map((item) => ({ title: item.title, desc: item.news_content, id: item._id, href: `/news-room/${item.slug}` }))
+  }
   return (
     <>
       <div className="container">
@@ -105,7 +108,7 @@ const Page = async ({ params }) => {
       <div className="border border-[#DCDCDC] mt-[60px] mb-[60px]"></div>
       <div className="mt-[-80px]">
         <FeaturedArticles
-          blogs={relatedArticles.map((item) => ({ title: item.title, desc: item.news_content, id: item._id, href: `/news-room/${item.slug}` }))}
+          blogs={filteredArticles()}
           sectionTitle={defaultLang === "en" ? "Related Articles" : "مقالات مميزة"}
           desc={defaultLang === "en" ? "We occasionally create interesting articles that you will undoubtedly like!" : "نقوم أحيانًا بإنشاء مقالات مثيرة للاهتمام ستعجبك بلا شك!"}
 
