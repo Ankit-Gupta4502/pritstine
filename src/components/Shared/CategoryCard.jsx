@@ -12,22 +12,22 @@ const CategoryCard = ({
   categoryName,
   containerClass = "",
   borderOnHover = false,
-  href=""
+  href = ""
 }) => {
   const cardInfo = twMerge(
-    "flex bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center justify-content-center bg-gradient-to-b from-0% to-[100%]   from-transparent to-[rgba(0,0,0,.7)] flex-col absolute left-0 right-0",
+    "flex top-0 justify-end bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center   flex-col absolute left-0 right-0",
     cardBodyClassName
   );
-  const containerStyle = twMerge(`relative ${borderOnHover?"border-[1px] border-solid   hover:border-white  border-transparent ":""} xl:h-[400px] lg:h-[400px] md:h-[294px] h-[320px]   group overflow-hidden`,containerClass)
+  const containerStyle = twMerge(`relative ${borderOnHover ? "border-[1px] border-solid   hover:border-white  border-transparent " : ""} xl:h-[400px] lg:h-[400px] md:h-[294px] h-[320px]   group overflow-hidden`, containerClass)
   return (
     <div className={containerStyle}>
       <Image
         src={img}
         className={` object-cover ${imgClass}`}
         layout="fill"
-        alt="pain" 
+        alt="pain"
       />
-      <div className={cardInfo}>
+      <div style={{ background: `linear-gradient(180deg, rgba(10, 3, 24, 0.30) 38%, #071F34 100%)` }} className={cardInfo}>
         <h5 className="text-white font-medium">{title || ""}</h5>
         <p className="text-white max-w-[285px] text-center ">{desc}</p>
         <Link href={href} className="flex space-x-4 justify-center items-center">

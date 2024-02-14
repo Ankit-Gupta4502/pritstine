@@ -29,7 +29,7 @@ const Services = ({services=[],categorySlug}) => {
 
             <Image src={`/basepath/${service?.banner?.image}`} layout="fill" alt={service?.service_name} className=" object-cover" />
             </div>
-            <div className="flex -bottom-[42%]  md:bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center justify-content-center bg-gradient-to-b from-0% to-[100%]   from-transparent to-[rgba(0,0,0,.7)] flex-col absolute left-0 right-0">
+            <div style={{ background: `linear-gradient(180deg, rgba(10, 3, 24, 0.30) 38%, #071F34 100%)` }} className="flex top-0 justify-end -bottom-[42%]  md:bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center justify-content-center bg-gradient-to-b from-0% to-[100%]   from-transparent to-[rgba(0,0,0,.7)] flex-col absolute left-0 right-0">
               <h5 className="text-white font-medium">{service.service_name}</h5>
               <p className="text-white max-w-[285px] text-center">
               We specialize in helping patients with dental hygiene and making their smiles look great
