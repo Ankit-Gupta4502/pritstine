@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: "Nunito Sans";
+  }
+
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "K2D", sans-serif;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 61.6px;
+  }
+
+  h2 {
+    font-size: 3rem;
+    line-height: 52.8px;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    line-height: 44px;
+  }
+
+  h4 {
+    font-size: 2rem;
+    line-height: 35.2px;
+    font-weight: 400;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    line-height: 26.4px;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+    line-height: 22px;
+  }
+
+  p {
+    @apply text-gray;
+    line-height: 22.4px;
+  }
+
+  a {
+    @apply block;
+  }
+
+  p,
+  label,
+  input {
+    @apply block;
+  }
+
+  @keyframes bounce {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(60%);
+    }
+  }
+
+  .bounce-animate {
+
+    animation: bounce 2s infinite;
+  }
+
+
+  h2.hero-text span {
+    position: relative;
+    width: max-content;
+    @apply text-primary;
+  }
+
+
+  h2.hero-text span::before {
+    content: "";
+    @apply absolute;
+    background-image: url(/assets/images/Star_1.svg);
+    @apply w-5;
+    @apply h-5;
+    @apply bg-cover;
+    @apply bg-no-repeat;
+    right: -12px;
+    top: 4px;
+  }
+
+
+
+  h2.hero-text span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    @apply w-full;
+    opacity: .4;
+    height: 30%;
+    @apply bg-primary;
+    @apply bottom-2;
+  }
+
+
+  .highlight-text span {
+    @apply text-primary;
+    @apply font-[K2D]
+  }
+
+}
