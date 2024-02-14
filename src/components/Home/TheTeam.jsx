@@ -34,7 +34,7 @@ const TheTeam = ({ teams = [] }) => {
 
                 {
                     teams.map((member) => {
-                        console.log(member.image);
+                       
                         return <div className='relative group min-w-[253px]' key={member._id} >
                             <div className={`max-w-[274px] rounded-[3px] overflow-hidden  h-[277px] md:h-[300px] relative z-10  ${defaultLang === "en" ? "" : "ml-auto"}`} >
                                 <Image src={`/basepath/${member?.image?.image}`} className='  duration-300 object-cover group-hover:scale-110 ' alt='team member' layout='fill' />

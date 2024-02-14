@@ -97,7 +97,7 @@ export default async function Home() {
       <MainCategory />
       <OurExperience />
       <AnimatedText />
-      <TheTeam teams={ [teams?.data || []]} />
+      <TheTeam teams={teams?.data || []} />
       <SuccessulTreatmens treatments={Array.isArray(treatments) ? treatments : []} />
       <FeaturedArticles blogs={(Array.isArray(data) ? data : []).map((item) => ({ title: item.title, desc: item.news_content, id: item._id, href: `/news-room/${item.slug}`, image: item?.image?.image ? `/basepath/${item?.image?.image}` : "" }))} sectionTitle={currlang === "en" ? "Featured Articles" : `مقالات مميزة
 `} desc={currlang === "en" ? "We occasionally create interesting articles that you will undoubtedly like!" : "نقوم أحيانًا بإنشاء مقالات مثيرة للاهتمام ستعجبك بلا شك!"} />
