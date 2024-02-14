@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment,useRef } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import useLayoutContext from "@/context/LayoutContext"
 import Input from '../UI/Input';
@@ -29,6 +29,7 @@ const BookingSidebar = () => {
         queryKey: ["treatments"],
         queryFn: () => axios("/api/treatment_list").then(({ data }) => data.data)
     })
+    const btnRef = useRef(null)
     const { mutate, error, isPending } = useMutation({
         mutationFn: () => axios.post("/api/book_appointment", {
             full_name: formData.fullName,
@@ -79,7 +80,7 @@ const BookingSidebar = () => {
 
 
         <Transition appear show={isBookSidebarOpen} as={Fragment}>
-            <Dialog as="div" className="relative  overflow-hidden  z-[100]" onClose={closeBookSidebar}>
+            <Dialog initialFocus={btnRef}  as="div" className="relative  overflow-hidden  z-[100]" onClose={closeBookSidebar}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -214,7 +215,7 @@ const BookingSidebar = () => {
                                 </Input>
 
 
-                                <Button disabled={isPending} onClick={mutate} className='  !mb-14 w-[158px] !mt-10' >
+                                <Button ref={btnRef} disabled={isPending} onClick={mutate} className='  !mb-14 w-[158px] !mt-10' >
                                     {isPending ? "wait..." : defaultLang === "en" ? "SUBMIT" : "يُقدِّم"}
                                 </Button>
                             </div>

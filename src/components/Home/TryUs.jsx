@@ -9,11 +9,12 @@ import useLayoutContext from '@/context/LayoutContext';
 import biLang from "@/locales/Home/TryUs"
 import { buttonLang } from '@/locales/UI';
 import AppointmentForm from '../Layout/AppointmentForm';
+import OpenModalButton from "@/components/Shared/OpenModalButton";
 const TryUs = () => {
     const { defaultLang } = useLayoutContext()
     return (
         <div className="bg-body overflow-hidden  relative  py-[86px] md:py-[150px]  ">
-            <Image src={mesh} alt='background' className=' object-contain md:object-cover  h-96 md:h-auto   top-1/4 md:top-auto   -left-[275px] z-10  absolute md:bottom-1 ' />
+            <Image src={mesh} alt='background' className=' object-contain md:object-cover  h-96 md:h-auto   top-1/4 md:top-auto   -left-[300px] z-10  absolute md:bottom-1 ' />
 
             <div className={`container max-w-[1232px] mx-auto   flex justify-between  flex-col  items-center relative z-20 ${defaultLang === "en" ? "md:flex-row" : "md:flex-row-reverse"}`}>
                 <div className={`w-full  max-w-[528px] ${defaultLang==="en"?"text-start":"text-end"}`}>
@@ -24,9 +25,7 @@ const TryUs = () => {
                        {biLang[defaultLang].desc}
                     </p>
 
-                    <AppointmentForm className={`mt-6  ${defaultLang==="en"?"":"ms-auto"} `} >
-                        {buttonLang[defaultLang].book}
-                    </AppointmentForm>
+                    <OpenModalButton className={`mt-6  ${defaultLang==="en"?"":"ms-auto"} `}  />
                 </div>
                 <div className="w-full mt-[40px] md:mt-0   max-w-[528px]">
                     <Image

@@ -1,18 +1,18 @@
-import React from "react";
+"use client"
+import React,{forwardRef, memo} from "react";
 import { twMerge } from "tailwind-merge";
-const Button = ({ children, className = "", iconClass = "", ...rest }) => {
+const Button = ({ children, className = "", iconClass = "", ...rest },parentRef) => {
   const classes = twMerge(
    
     " group overflow-hidden disabled:opacity-75 rounded-[3px] space-x-3   flex items-center px-6 py-[14px] text-white bg-secondary  ",
     className
   );
   const iconClasses = twMerge(
- 
     " w-[26px] block relative text-white  overflow-hidden",
     iconClass
   );
   return (
-    <button  className={classes} {...rest}>
+    <button ref={parentRef}  className={classes} {...rest}>
       <div className="relative">
         <span className="block w-max absolute group-hover:top-2/4 -top-full -translate-y-[100%] group-hover:-translate-y-2/4  duration-300">
           {children}
@@ -70,4 +70,4 @@ const Button = ({ children, className = "", iconClass = "", ...rest }) => {
   );
 };
 
-export default Button;
+export default memo(forwardRef(Button));
