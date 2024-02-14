@@ -14,7 +14,7 @@ const  {defaultLang} = useLayoutContext()
   <div className="w-full bg-primary h-[345px] relative z-20 mt-20">
    <div className="flex justify-center  items-center pt-20 relative z-20">
     <div>
-    <h3 className=" font-normal text-white pb-5">{defaultLang==="en"?"Medical Services in Dubai":"الخدمات الطبية في دبي"}</h3>
+    <h3 className=" font-normal text-white pb-5 text-center">{defaultLang==="en"?"Medical Services in Dubai":"الخدمات الطبية في دبي"}</h3>
     <span className="text-white text-center block">{subTitle}</span>
     <div className="flex justify-center mt-10">
     <OpenModalButton label={defaultLang==="en"?"Book Free Consultation":"احجز استشارة مجانية"}/>

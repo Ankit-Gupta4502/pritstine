@@ -53,7 +53,7 @@ const Page = async ({ params }) => {
             className='h-[60vh] md:min-h-[563px] min-h-[363px] w-full rounded-[24px] object-cover '
            
             alt='banner' />
-          <div className="absolute  top-2/4  -translate-y-2/4  left-2/4 -translate-x-2/4  font-[700] md:text-[56px] text-[24px] text-[#fff]">
+          <div className="absolute  top-2/4  -translate-y-2/4  left-2/4 -translate-x-2/4  font-[700] xl:text-[56px] md:text-[40px] text-[18px] text-[#fff]">
             {data?.treatment_name}
           </div>
         </div>

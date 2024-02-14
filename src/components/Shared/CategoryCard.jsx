@@ -15,7 +15,7 @@ const CategoryCard = ({
   href = ""
 }) => {
   const cardInfo = twMerge(
-    "flex top-0 justify-end bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center   flex-col absolute left-0 right-0",
+    "flex top-0 justify-end xl:bottom-[-34%] md:-bottom-[50%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center   flex-col absolute left-0 right-0",
     cardBodyClassName
   );
   const containerStyle = twMerge(`relative ${borderOnHover ? "border-[1px] border-solid   hover:border-white  border-transparent " : ""} xl:h-[400px] lg:h-[400px] md:h-[294px] h-[320px]   group overflow-hidden`, containerClass)
