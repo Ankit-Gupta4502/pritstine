@@ -36,7 +36,7 @@ const Sidebar = ({ isSidebarOpen = true, setIsSidebarOpen = () => false }) => {
                     isOpen && <div className={` mt-4  overflow-hidden`} >
                         {
                             data.map((item) => {
-                                return <Link key={item._id} href={`/treatment/${item.slug}`} className=' block  text-[2rem]  font-[K2d] text-white '>
+                                return <Link key={item._id} href={`/treatments/${item.slug}`} className=' block  text-[2rem]  font-[K2d] text-white '>
                                     {item.treatment_name}
 
                                 </Link>
