@@ -131,4 +131,12 @@
     @apply font-[K2D]
   }
 
+  .timer-only-container  div.react-datepicker__time-container  {
+    width: 140px !important;
+  }
+
+  .timer-only-container  div.react-datepicker__time-container .react-datepicker__time-list{
+    padding-right: 2px !important;
+  }
+
 }

@@ -30,6 +30,7 @@ const BookingSidebar = () => {
         queryFn: () => axios("/api/treatment_list").then(({ data }) => data.data)
     })
     const btnRef = useRef(null)
+    const timeRef = useRef(null)
     const { mutate, isPending } = useMutation({
         mutationFn: () => axios.post("/api/book_appointment", {
             full_name: formData.fullName,
@@ -196,7 +197,8 @@ const BookingSidebar = () => {
                                         handleFocus("preferred_time")
                                     }
                                     }
-                                    popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full 
+                                    ref={timeRef}
+                                    popperClassName="!z-50 timer-only-container" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full 
 
                                     ${errors?.preferred_time ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`
 
