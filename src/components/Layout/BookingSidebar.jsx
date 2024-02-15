@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, Fragment,useRef } from 'react'
+import React, { useEffect, useState, Fragment, useRef } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import useLayoutContext from "@/context/LayoutContext"
 import Input from '../UI/Input';
@@ -30,7 +30,7 @@ const BookingSidebar = () => {
         queryFn: () => axios("/api/treatment_list").then(({ data }) => data.data)
     })
     const btnRef = useRef(null)
-    const { mutate, error, isPending } = useMutation({
+    const { mutate, isPending } = useMutation({
         mutationFn: () => axios.post("/api/book_appointment", {
             full_name: formData.fullName,
             mobile_number: formData.mobileNo,
@@ -56,17 +56,22 @@ const BookingSidebar = () => {
             setOfferId(null)
             closeBookSidebar()
             toast.success("Your appointment is confirmed")
+        },
+        onError: (error) => {
+            setErrors(error?.response?.data?.errors)
         }
     })
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
     }
-    useEffect(() => {
-        if (error?.response?.data?.errors) {
-            setErrors(error?.response?.data?.errors)
-        }
-    }, [error?.response?.data?.errors])
+
+    const handleFocus = (name) => {
+        const prev = structuredClone(errors)
+        delete prev[name]
+        console.log(prev);
+        setErrors(prev)
+    }
 
     useEffect(() => {
         if (!isBookSidebarOpen && Object.keys(errors).length) {
@@ -80,7 +85,7 @@ const BookingSidebar = () => {
 
 
         <Transition appear show={isBookSidebarOpen} as={Fragment}>
-            <Dialog initialFocus={btnRef}  as="div" className="relative  overflow-hidden  z-[100]" onClose={closeBookSidebar}>
+            <Dialog initialFocus={btnRef} as="div" className="relative  overflow-hidden  z-[100]" onClose={closeBookSidebar}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -122,7 +127,7 @@ const BookingSidebar = () => {
                             <div className="px-10   space-y-10 pt-10">
                                 <div>
 
-                                    <Input className={errors?.full_name ? "border-rose-700" : ""} value={formData.fullName} name="fullName" onChange={handleChange} >
+                                    <Input className={errors?.full_name ? "border-rose-700" : ""} onFocus={() => handleFocus("full_name")} value={formData.fullName} name="fullName" onChange={handleChange} >
                                         <label className={`block ${errors?.full_name ? " text-rose-700 " : " text-secondary"}`}>
                                             {defaultLang === "en" ? "FULL NAME" : "الاسم الكامل"}
 
@@ -133,7 +138,7 @@ const BookingSidebar = () => {
                                     </Input>
                                 </div>
 
-                                <Input value={formData.mobileNo} className={errors?.mobile_number ? "border-rose-700" : ""} name="mobileNo" onChange={(e) => (!isNaN(e.target.value) && e.target.value.length < 11) && handleChange(e)} >
+                                <Input onFocus={() => handleFocus("mobile_number")} value={formData.mobileNo} className={errors?.mobile_number ? "border-rose-700" : ""} name="mobileNo" onChange={(e) => (!isNaN(e.target.value) && e.target.value.length < 11) && handleChange(e)} >
                                     <label className={`block ${errors?.mobile_number ? " text-rose-700 " : " text-secondary"}`}>
 
                                         {defaultLang === "en" ? "  MOBILE NUMBER" : "الاسم الكامل"}
@@ -148,7 +153,7 @@ const BookingSidebar = () => {
                                 </Input>
 
 
-                                <Input value={formData.email} className={errors?.email ? "border-rose-700" : ""} name="email" onChange={handleChange} >
+                                <Input onFocus={() => handleFocus("email")} value={formData.email} className={errors?.email ? "border-rose-700" : ""} name="email" onChange={handleChange} >
                                     <label className={`block ${errors?.email ? " text-rose-700 " : " text-secondary"}`}>
                                         {defaultLang === "en" ? "EMAIL ADDRESS" : "عنوان البريد الإلكتروني"}
 
@@ -164,8 +169,13 @@ const BookingSidebar = () => {
                                     }
                                     required={!!errors?.treatment}
                                     defaultValue={formData.treatment}
-                                    onChange={(value) => setFormData(prev => ({ ...prev, treatment: value }))}
-                                    className={errors?.treatment_id?"text-rose-700 border-rose-700":""}
+                                    onChange={(value) => {
+                                        setFormData(prev => ({ ...prev, treatment: value }))
+                                        handleFocus("treatment_id")
+                                    }
+                                    }
+
+                                    className={errors?.treatment_id ? "text-rose-700 border-rose-700" : ""}
                                 >
 
                                 </Select>
@@ -173,16 +183,24 @@ const BookingSidebar = () => {
 
 
 
-                                <DatePicker minDate={new Date()} placeholderText='PREFERRED DATE *' showIcon calendarIconClassname='right-0' icon={<IoCalendarOutline />} popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full ${errors?.preferred_date ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`} selected={formData.date} onChange={(date) => setFormData(prev => ({ ...prev, date }))} />
+                                <DatePicker minDate={new Date()} placeholderText='PREFERRED DATE *' showIcon calendarIconClassname='right-0' icon={<IoCalendarOutline />} popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full ${errors?.preferred_date ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`} selected={formData.date} onChange={(date) =>{
+                                    setFormData(prev => ({ ...prev, date }))
+                                    handleFocus("preferred_date")
+                                }
+                                } />
 
                                 <DatePicker
                                     placeholderText='PREFERRED TIME *'
-                                    onChange={(date) => setFormData(prev => ({ ...prev, time: date }))}
+                                    onChange={(date) => {
+                                        setFormData(prev => ({ ...prev, time: date }))
+                                        handleFocus("preferred_time")
+                                    }
+                                    }
                                     popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full 
 
                                     ${errors?.preferred_time ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`
-                                
-                                } selected={formData.time}
+
+                                    } selected={formData.time}
                                     showTimeSelect
                                     showTimeSelectOnly
                                     timeIntervals={15}
@@ -195,7 +213,7 @@ const BookingSidebar = () => {
                                 {/* <Input type='time' value={formData.time} name="time" onChange={handleChange} className='  appearance-none  ' /> */}
 
 
-                                <Input value={formData.bestTimeToCall} name="bestTimeToCall" onChange={handleChange} className={errors?.best_time_to_call ? "border-rose-700 " : ""} >
+                                <Input value={formData.bestTimeToCall} onFocus={()=>handleFocus("best_time_to_call")} name="bestTimeToCall" onChange={handleChange} className={errors?.best_time_to_call ? "border-rose-700 " : ""} >
                                     <label className={errors?.best_time_to_call ? " block text-rose-700 border-rose-700 " : "block text-secondary"}>
                                         {defaultLang === "en" ? "BEST TIME TO CALL YOU" : "أفضل وقت للاتصال بك"}
 
