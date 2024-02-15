@@ -49,6 +49,8 @@ const Page = async ({ params }) => {
       >
 
         <div className='relative'>
+
+        <div className="bg-black/20 absolute inset-0 rounded-[24px]"></div>
           <img src={data?.banner?.image ? `/basepath/${data?.banner?.image}` : "/assets/images/desntist banner.png"}
             className='h-[60vh] md:min-h-[563px] min-h-[363px] w-full rounded-[24px] object-cover '
            

@@ -3,7 +3,7 @@ import TeethCleaning from "./_components/TeethCleaning";
 import ScrollText from "./_components/ScrollText";
 import Hero from "@/components/Shared/Hero";
 import StyledText from "@/components/Shared/StyledText";
-
+import { MdChevronRight } from "react-icons/md";
 import CleaningTreatment from "./_components/CleaningTreatment";
 import FreeConsult from "./_components/FreeConsult";
 import SignUp from "@/components/Shared/SignUp";
@@ -13,6 +13,7 @@ import OpenModalButton from "@/components/Shared/OpenModalButton";
 import axios from "axios";
 import { cookies } from "next/headers";
 import Image from "next/image";
+import Link from "@/components/Shared/Link";
 const getsubCategoryDetail = async (slug) => {
   const cookiesList = cookies()
   const lang = cookiesList.get("lang").value || "en"
@@ -36,7 +37,7 @@ const Page = async ({ params }) => {
   const cookiesList = cookies()
   const lang = cookiesList.get("lang").value || "en"
   const { data } = await getsubCategoryDetail(params.subcategory)
-  console.log(data,"dataaaaa");
+  console.log(data, "dataaaaa");
   const formatText = () => {
     return (
       <StyledText>
@@ -55,22 +56,47 @@ const Page = async ({ params }) => {
         `}
       >
         <div className='relative'>
+          <div className="bg-black/20 absolute inset-0 rounded-[24px]"></div>
           <img src={`/basepath/${data?.banner?.image}`}
-            className='h-[60vh] md:min-h-[563px] min-h-[363px] w-full rounded-[24px] object-cover ' 
+            className='h-[60vh] md:min-h-[563px] min-h-[363px] w-full rounded-[24px] object-cover '
             alt='banner' />
-          <div className="absolute  top-2/4  -translate-y-2/4  left-2/4 -translate-x-2/4  font-[700] xl:text-[56px] md:text-[40px] text-[24px] text-[#fff]">
-            {data?.service_name}
+          <div className="absolute   top-2/4  -translate-y-2/4  left-2/4 -translate-x-2/4  font-[700] xl:text-[56px] md:text-[40px] text-[24px] text-[#fff]">
+            <span className="block text-center">
+
+              {data?.service_name}
+            </span>
+
+            <div className="flex  font-normal  text-base space-x-2 items-center justify-center">
+              <Link href="/">
+                {lang === "en" ? "Home" : "بيت"}
+              </Link>
+
+              <span>
+                <MdChevronRight size={20} />
+              </span>
+
+              <Link href={`/treatments/${params.category}`}>
+                {data?.treatment?.treatment_name}
+              </Link>
+
+              <span>
+                <MdChevronRight size={20} />
+              </span>
+              <Link href={`/treatments/${params.category}/${params.subcategory}`}>
+                {data?.service_name}
+              </Link>
+            </div>
           </div>
         </div>
       </Hero>
       <TeethCleaning title={data?.content1_title || ""} desc={data?.content1 || ""} image={data?.content1_image?.image ? `/basepath/${data?.content1_image?.image}` : ""} />
       <ScrollText text={data?.marquee_title} />
 
-      <CleaningTreatment 
-      bulletPoints={data?.content2_bullet_Pnt ? JSON.parse(data?.content2_bullet_Pnt) : []} title={data?.content2_title} 
-      subtitle={data?.content2_intro} 
-      desc={data?.content2_conclusion} 
-      img={data?.content2_image1?.image ? `/basepath/${data?.content2_image1?.image}` : ""} img2={data?.content2_image2?.image ? `/basepath/${data?.content2_image2?.image}` : ""} 
+      <CleaningTreatment
+        bulletPoints={data?.content2_bullet_Pnt ? JSON.parse(data?.content2_bullet_Pnt) : []} title={data?.content2_title}
+        subtitle={data?.content2_intro}
+        desc={data?.content2_conclusion}
+        img={data?.content2_image1?.image ? `/basepath/${data?.content2_image1?.image}` : ""} img2={data?.content2_image2?.image ? `/basepath/${data?.content2_image2?.image}` : ""}
       />
 
       <FreeConsult desc={data?.content3 || ""} />
@@ -80,7 +106,7 @@ const Page = async ({ params }) => {
       <Faq defaultLang={lang} questions={Array.isArray(data?.faq) ? data.faq : []} />
 
       <SignUp />
-      
+
     </div>
 
   );
