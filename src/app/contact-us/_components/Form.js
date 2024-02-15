@@ -22,7 +22,7 @@ const Form = () => {
 
   const [errors, setErrors] = useState({})
 
-  const { isPending, error, mutate } = useMutation({
+  const { isPending,  mutate } = useMutation({
     mutationKey: "submitForm",
     mutationFn: () => axios.post("/api/contact_us", {
       full_name: formData.fullName,
@@ -41,6 +41,11 @@ const Form = () => {
       toast.success(`Thank you. Your message has been successfully received. We'll get back to you as soon as possible.`,{
         duration:3000
       })
+    },
+    onError:(error)=>{
+      if (error?.response?.data?.errors) {
+        setErrors(error.response.data.errors)
+      }
     }
   })
 
@@ -49,16 +54,14 @@ const Form = () => {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-
-  useEffect(() => {
-    if (error?.response?.data?.errors) {
-      setErrors(error.response.data.errors)
-    }
-  }, [error])
-
+  const handleFocus = (name) =>{
+    const prevErr = structuredClone(errors)
+    delete prevErr[name]
+    setErrors(prevErr)
+  }
 
 
-  console.log(errors);
+
   return (
     <>
       <div
@@ -138,6 +141,7 @@ const Form = () => {
                 placeholder={defaultLang === "en" ? "FULL NAME" : "الاسم الكامل"}
                 className="w-full border-solid border-b-[1px] border-secondary placeholder:text-secondary text-secondary text-[18px] focus:outline-none"
                 required
+                onFocus={()=>handleFocus("full_name")}
                 style={{ direction: defaultLang === "en" ? "ltr" : "rtl" }}
               />
               {errors.full_name && <span className=" block text-rose-600 " >
@@ -159,6 +163,7 @@ const Form = () => {
                 }
                 className="w-full border-solid border-b-[1px] border-secondary placeholder:text-secondary text-secondary text-[18px] focus:outline-none"
                 required
+                onFocus={()=>handleFocus("email")}
                 style={{ direction: defaultLang === "en" ? "ltr" : "rtl" }}
               />
               {errors.email && <span className=" block text-rose-600 " >
@@ -176,6 +181,7 @@ const Form = () => {
                 onChange={(e) => !isNaN(e.target.value) && handleChange(e)}
                 className="w-full border-solid border-b-[1px] border-secondary placeholder:text-secondary text-secondary text-[18px] focus:outline-none"
                 required
+                onFocus={()=>handleFocus("phone_number")}
                 style={{ direction: defaultLang === "en" ? "ltr" : "rtl" }}
               />
               {errors.phone_number && <span className=" block text-rose-600 " >
@@ -193,6 +199,7 @@ const Form = () => {
                 placeholder={defaultLang === "en" ? "MESSAGE" : "رسالة"}
                 className="w-full border-solid border-b-[1px] border-secondary placeholder:text-secondary text-secondary text-[18px] focus:outline-none"
                 required
+                onFocus={()=>handleFocus("message")}
                 style={{ direction: defaultLang === "en" ? "ltr" : "rtl" }}
               />
 
