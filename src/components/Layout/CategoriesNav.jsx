@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from 'axios';
 import useLayoutContext from '@/context/LayoutContext';
 import Link from '../Shared/Link';
+import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from '../UI/Tooltip';
 const Categories = ({ isActive = false, setIsActive = () => true }) => {
   const { defaultLang } = useLayoutContext()
   const [cord, setCord] = useState({ x: 35, width: defaultLang === "en" ? 136 : 97, slug: "" })
@@ -90,8 +91,8 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
                 subCategories.map((item) => {
                   return <div className=' flex-shrink-0 basis-[220px] ' key={item._id} >
                     <Link href={`/treatments/${cord.slug}/${item.slug}`} className='py-5 group space-y-[24px]  text-center' onClick={(e) => {
-                      e.stopPropagation();
                       setIsActive(false)
+                      e.stopPropagation();
                     }} >
                       <div className=' overflow-hidden rounded-[3px]' >
                         <Image
@@ -102,9 +103,19 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
                           className='w-full  group-hover:scale-110 duration-300  object-cover h-[220px] '
                         />
                       </div>
-                      <h6 className=' leading-relaxed line-clamp-1 text-secondary  group-hover:text-primary duration-200 ' >
-                        {item?.service_name}
-                      </h6>
+                      <TooltipProvider  >
+                        <Tooltip>
+                          <TooltipTrigger data-tooltip-place="bottom"  className=''>
+                            <h6 className=' text-center  leading-relaxed line-clamp-1 text-secondary  group-hover:text-primary duration-200 '>
+
+                             {item?.service_name}
+                            </h6>
+                             </TooltipTrigger>
+                          <TooltipContent className="bg-white shadow-2xl " sideOffset={20} >
+                            <p> {item?.service_name} </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
 
                     </Link>
                   </div>
