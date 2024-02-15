@@ -27,7 +27,7 @@ const CleaningTreatment = ({desc="",bulletPoints=[],subtitle="",title="",img=1,i
                  {subtitle}
                 </p>
               </div>
-              <div>
+              <div className=" max-w-[650px] " >
                 <ul className='text-[16px] text-[#071F34] font-normal leading-[22.4px] font-["Nunito_Sans"] list-none pl-4 space-y-2 my-7'>
                   {
                     bulletPoints.map((item,index)=>{
