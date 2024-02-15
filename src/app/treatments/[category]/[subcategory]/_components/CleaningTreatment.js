@@ -16,7 +16,7 @@ const CleaningTreatment = ({desc="",bulletPoints=[],subtitle="",title="",img=1,i
   return (
     <>
       <div className="container xl:pb-[50px]">
-        <div className="flex max-w-[1356px] ms-auto md:flex-row flex-col justify-between  mt-[150px] mb-36   items-center ">
+        <div className="flex max-w-[1356px] ms-auto md:flex-row flex-col justify-between  mt-[150px] mb-36   items-start ">
           <div className="flex items-center justify-center min-h-full">
             <div className="flex-1 xl:max-w-[700px] lg:max-w-[366px] md:max-w-[400px]">
               <h4 className="text-primary xl:text-[48px]  text-[36px] leading-[43px]  font-normal xl:leading-[52px] ">
