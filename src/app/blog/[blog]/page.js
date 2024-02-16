@@ -25,6 +25,28 @@ const getBlogDetail = async (slug) => {
   }
 }
 
+
+export async function generateMetadata({ params }) {
+  const  data  = await getBlogDetail(params.blog)
+
+  const meta = {
+    keywords:data?.meta_keyword?.split?.(","),
+    description:data?.meta_description,
+    openGraph: {
+      locale: data.language==="arab"?"ar":"en",
+      type: "website",
+      site_name: "Pristine Medical",
+      images: ["/assets/images/logo.svg"],
+      title:data?.meta_title,
+    },
+    alternates: {
+      canonical: "",
+    }
+  }
+
+  return meta
+}
+
 const getRelatedBlogs = async (slug) => {
   try {
     const cookieList = cookies()

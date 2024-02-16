@@ -32,7 +32,6 @@ const getCategoryDetail = async (slug) => {
 const Page = async ({ params }) => {
   const { data } = await getCategoryDetail(params.category)
   const currlang = cookies().get("lang")?.value || "en"
-  console.log(data, "https://pristine.amazonpro.in/api/all_services");
   const formateText = () => {
     return <StyledText>
       <h2 className="text-secondary hero-text xl:text-[3rem] leading-9 md:leading-[52px]    lg:text-[3rem] pb-5 text-[2rem] font-semibold" dangerouslySetInnerHTML={{ __html: data?.title || "" }} />

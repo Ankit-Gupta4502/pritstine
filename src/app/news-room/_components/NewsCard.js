@@ -16,7 +16,7 @@ const NewsCard = ({ data = [] }) => {
       <div className="container   justify-between   mt-[90px]">
         <div className="md:px-[100px] px-5 grid grid-cols-1 md:grid-cols-2 gap-10 " >
 
-        <div className="block group border-[0.70px] border-solid  border-[#E0E0E0] mb-10 xl:mb-0">
+        <Link  href={`/news-room/${mainCard?.slug ? mainCard?.slug : ""}`} className="block group border-[0.70px] border-solid  border-[#E0E0E0] mb-10 xl:mb-0">
           <div className="h-[330px] relative overflow-hidden ">
             <Image
               src={mainCard?.image?.image ? `/basepath/${mainCard?.image?.image}` : "/assets/images/choose1.png"}
@@ -37,18 +37,18 @@ const NewsCard = ({ data = [] }) => {
 
             <p className="mt-[20px] line-clamp-3" dangerouslySetInnerHTML={{ __html: mainCard?.news_content ? mainCard?.news_content : "" }} />
 
-            <Link href={`/news-room/${mainCard?.slug ? mainCard?.slug : ""}`} className="flex w-max ms-auto  justify-end mt-[26px] cursor-pointer text-[14px] text-[#7F7F7F] group-hover:text-secondary duration-300">
+            <div className="flex w-max ms-auto  justify-end mt-[26px] cursor-pointer text-[14px] text-[#7F7F7F] group-hover:text-secondary duration-300">
               READ MORE
               <RiArrowRightSLine size={20} />
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="space-y-6">
           {
             restCards.map((item) => {
               return <Link href={`/news-room/${item?.slug ? item?.slug : ""}`} key={item._id}>
                 <div className="flex cursor-pointer items-center relative group  gap-3 md:gap-5" >
-                  <div className="md:min-w-[230px] min-w-[150px] overflow-hidden">
+                  <div className="sm:w-[230px] w-[150px] flex-shrink-0 overflow-hidden">
                     <Image
                       src={item?.image?.image ? `/basepath/${item?.image?.image}` : "/assets/images/choose1.png"}
                       alt="news group"
