@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import DatePicker from "react-datepicker";
 import { Dialog, Transition } from '@headlessui/react'
 import { IoCalendarOutline } from "react-icons/io5";
+import { format } from 'date-fns';
 const BookingSidebar = () => {
     const { closeBookSidebar, isBookSidebarOpen, defaultLang, offerId, setOfferId } = useLayoutContext()
     const [formData, setFormData] = useState({
@@ -37,8 +38,8 @@ const BookingSidebar = () => {
             mobile_number: formData.mobileNo,
             email: formData.email,
             treatment_id: formData.treatment.id,
-            preferred_date: formData.date,
-            preferred_time: formData.time,
+            preferred_date:format(formData.date,"yyyy-MM-dd HH:mm:ss") ,
+            preferred_time: format(formData.time,"yyyy-MM-dd HH:mm:ss") ,
             best_time_to_call: formData.bestTimeToCall,
             additional_queries: formData.additionalQueries,
             offer_id: offerId
@@ -83,7 +84,7 @@ const BookingSidebar = () => {
     }, [isBookSidebarOpen, errors])
 
 
-
+console.log();
     return (
 
 
