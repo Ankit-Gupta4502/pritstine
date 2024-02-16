@@ -56,7 +56,9 @@ const BookingSidebar = () => {
             })
             setOfferId(null)
             closeBookSidebar()
-            toast.success("Your appointment is confirmed")
+            toast.success(`Thank you. We have received your appointment request. We'll get back to you as soon as possible.`, {
+                duration: 4000
+            })
         },
         onError: (error) => {
             setErrors(error?.response?.data?.errors)
@@ -184,7 +186,7 @@ const BookingSidebar = () => {
 
 
 
-                                <DatePicker minDate={new Date()} placeholderText='PREFERRED DATE *' showIcon calendarIconClassname='right-0' icon={<IoCalendarOutline />} popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full ${errors?.preferred_date ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`} selected={formData.date} onChange={(date) =>{
+                                <DatePicker minDate={new Date()} placeholderText='PREFERRED DATE *' showIcon calendarIconClassname='right-0' icon={<IoCalendarOutline />} popperClassName="!z-50" wrapperClassName='w-full  outline-0 ' calendarClassName='' className={`!pl-0 focus:outline-0 border-b  pb-2 w-full ${errors?.preferred_date ? "border-rose-700 placeholder:text-rose-700 " : "border-secondary placeholder:text-secondary"}`} selected={formData.date} onChange={(date) => {
                                     setFormData(prev => ({ ...prev, date }))
                                     handleFocus("preferred_date")
                                 }
@@ -215,7 +217,7 @@ const BookingSidebar = () => {
                                 {/* <Input type='time' value={formData.time} name="time" onChange={handleChange} className='  appearance-none  ' /> */}
 
 
-                                <Input value={formData.bestTimeToCall} onFocus={()=>handleFocus("best_time_to_call")} name="bestTimeToCall" onChange={handleChange} className={errors?.best_time_to_call ? "border-rose-700 " : ""} >
+                                <Input value={formData.bestTimeToCall} onFocus={() => handleFocus("best_time_to_call")} name="bestTimeToCall" onChange={handleChange} className={errors?.best_time_to_call ? "border-rose-700 " : ""} >
                                     <label className={errors?.best_time_to_call ? " block text-rose-700 border-rose-700 " : "block text-secondary"}>
                                         {defaultLang === "en" ? "BEST TIME TO CALL YOU" : "أفضل وقت للاتصال بك"}
 
