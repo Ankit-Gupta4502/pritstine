@@ -33,17 +33,20 @@ const BookingSidebar = () => {
     const btnRef = useRef(null)
     const timeRef = useRef(null)
     const { mutate, isPending } = useMutation({
-        mutationFn: () => axios.post("/api/book_appointment", {
-            full_name: formData.fullName,
-            mobile_number: formData.mobileNo,
-            email: formData.email,
-            treatment_id: formData.treatment.id,
-            preferred_date:format(formData.date,"yyyy-MM-dd HH:mm:ss") ,
-            preferred_time: format(formData.time,"yyyy-MM-dd HH:mm:ss") ,
-            best_time_to_call: formData.bestTimeToCall,
-            additional_queries: formData.additionalQueries,
-            offer_id: offerId
-        }),
+        mutationFn: () => {
+            console.log("working on mutation");
+            return axios.post("/api/book_appointment", {
+                full_name: formData.fullName,
+                mobile_number: formData.mobileNo,
+                email: formData.email,
+                treatment_id: formData.treatment.id,
+                preferred_date: formData.date ? format(formData.date, "yyyy-MM-dd HH:mm:ss") : formData.date,
+                preferred_time: formData.time ? format(formData.time, "yyyy-MM-dd HH:mm:ss") : formData.time,
+                best_time_to_call: formData.bestTimeToCall,
+                additional_queries: formData.additionalQueries,
+                offer_id: offerId
+            })
+        },
         onSuccess: (value) => {
             setFormData({
                 fullName: "",
@@ -62,7 +65,10 @@ const BookingSidebar = () => {
             })
         },
         onError: (error) => {
-            setErrors(error?.response?.data?.errors)
+            console.error(error, "errors");
+            if (error?.response?.data?.errors) {
+                setErrors(error?.response?.data?.errors)
+            }
         }
     })
     const handleChange = (e) => {
@@ -71,10 +77,12 @@ const BookingSidebar = () => {
     }
 
     const handleFocus = (name) => {
-        const prev = structuredClone(errors)
-        delete prev[name]
-        console.log(prev);
-        setErrors(prev)
+        if (errors?.[name]) {
+            const prev = structuredClone(errors)
+            delete prev[name]
+            console.log(prev);
+            setErrors(prev)
+        }
     }
 
     useEffect(() => {
@@ -84,7 +92,7 @@ const BookingSidebar = () => {
     }, [isBookSidebarOpen, errors])
 
 
-console.log();
+    console.log();
     return (
 
 
@@ -238,7 +246,10 @@ console.log();
                                 </Input>
 
 
-                                <Button ref={btnRef} disabled={isPending} onClick={mutate} className='  !mb-14 w-[158px] !mt-10' >
+                                <Button ref={btnRef} disabled={isPending} onClick={() => {
+
+                                    mutate()
+                                }} className='  !mb-14 w-[158px] !mt-10' >
                                     {isPending ? "wait..." : defaultLang === "en" ? "SUBMIT" : "يُقدِّم"}
                                 </Button>
                             </div>

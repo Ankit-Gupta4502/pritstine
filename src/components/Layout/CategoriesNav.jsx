@@ -55,12 +55,17 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
         setIsActive(false)
       }
     }
-    window.addEventListener("mousemove",handleMouseout)
-    return (()=>window.removeEventListener("mousemove",handleMouseout))
+    if (isActive) { 
+      window.addEventListener("mousemove",handleMouseout)
+    }
+    return (()=>{
+      console.log("working on unmount");
+      window.removeEventListener("mousemove",handleMouseout)
+  })
   },[isActive])
   return (
     <div className={`dialog-panel ${isActive ? "-translate-x-2/4" : "  translate-x-full  "}  fixed    z-50  w-full bg-black/40  left-2/4  !ml-0  max-w-[1512px]   top-[74px]  duration-500   ease-linear origin-left  pb-5   h-full `}>
-      <div  className='min-h-[500px] pt-9  bg-white' >
+      <div  className='min-h-[500px] flex flex-col pt-9  bg-white' >
 
       <div className="flex  px-9 items-center duration-200 gap-[30px] relative ">
 
@@ -86,9 +91,11 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
         }
       </div>
 
-      <div className=" flex-col justify-between flex h-full">
-        {isLoading ? <div
-          className="block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current mx-auto border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+      <div className=" flex-col flex-1  justify-between flex h-full">
+        {isLoading ?
+       
+         <div
+          className="block my-14 h-8 w-8 animate-spin rounded-full border-4 border-solid border-current mx-auto border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
           role="status">
           <span
             className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
@@ -147,7 +154,7 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
           </div>
         }
 
-        <div className="px-9 border-t border-[#E5E5E5]   pt-5  pb-10">
+        <div className="px-9 border-t border-[#E5E5E5]   p-5  ">
           <p>
 
             We offer more than  <span className='text-secondary'>
