@@ -150,7 +150,7 @@ const BookingSidebar = () => {
                                     </Input>
                                 </div>
 
-                                <Input onFocus={() => handleFocus("mobile_number")} value={formData.mobileNo} className={errors?.mobile_number ? "border-rose-700" : ""} name="mobileNo" onChange={(e) => (!isNaN(e.target.value) && e.target.value.length < 11) && handleChange(e)} >
+                                <Input onFocus={() => handleFocus("mobile_number")} value={formData.mobileNo} className={errors?.mobile_number ? "border-rose-700" : ""} name="mobileNo" onChange={(e) => (!isNaN(e.target.value) && e.target.value.length < 16) && handleChange(e)} >
                                     <label className={`block ${errors?.mobile_number ? " text-rose-700 " : " text-secondary"}`}>
 
                                         {defaultLang === "en" ? "  MOBILE NUMBER" : "الاسم الكامل"}
