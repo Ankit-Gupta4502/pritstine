@@ -219,12 +219,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div
-          className={`fixed bottom-0 ${isActive
-              ? "opacity-100 pointer-events-auto "
-              : "opacity-0 pointer-events-none"
-            } duration-5000 bg-black/40  left-0 right-0 h-[calc(100vh-574px)] z-40 `}
-        />
+       
       </div>
       <Sidebar
         isSidebarOpen={isSidebarOpen}

@@ -48,8 +48,20 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
     data,
     defaultLang
   ])
+
+  useEffect(()=>{
+    const handleMouseout = (e) =>{
+      if (e.target.classList.contains("dialog-panel")) {
+        setIsActive(false)
+      }
+    }
+    window.addEventListener("mousemove",handleMouseout)
+    return (()=>window.removeEventListener("mousemove",handleMouseout))
+  },[isActive])
   return (
-    <div className={` ${isActive ? "-translate-x-2/4" : "  translate-x-full  "}  fixed  bg-white   z-50  w-full  left-2/4  !ml-0  max-w-[1512px] h-[500px]   top-[74px]  duration-500   ease-linear origin-left  pt-9 pb-5  `}>
+    <div className={`dialog-panel ${isActive ? "-translate-x-2/4" : "  translate-x-full  "}  fixed    z-50  w-full bg-black/40  left-2/4  !ml-0  max-w-[1512px]   top-[74px]  duration-500   ease-linear origin-left  pb-5   h-full `}>
+      <div  className='min-h-[500px] pt-9  bg-white' >
+
       <div className="flex  px-9 items-center duration-200 gap-[30px] relative ">
 
 
@@ -143,6 +155,7 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
             </span>   and procedures.
           </p>
         </div>
+      </div>
       </div>
     </div>
   )
