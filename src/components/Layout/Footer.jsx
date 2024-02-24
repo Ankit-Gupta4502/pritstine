@@ -174,7 +174,7 @@ const Footer = () => {
           <div className="md:ms-8 order-2 md:order-1 md:w-auto w-full mt-3 text-left">
             <p className="text-[#FFF] text-[14px]">
               {" "}
-              {defaultLang==="en"?"© pristine medical center 2022️":"© مركز البكر الطبي 2022️ "}
+              {defaultLang==="en"?"Copyright © 2024 Pristine Medical. All Rights Reserved. Developed by Hexabells Technologies":"© مركز البكر الطبي 2022️ "}
             </p>
           </div>
           <div className="order-1 md:order-2 w-full md:w-auto lg:ml-0 lg:mr-8">
