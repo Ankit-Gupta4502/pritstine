@@ -117,7 +117,7 @@ const Header = () => {
               {defaultLang === "en" ? "Blog" : "مدونة"}
             </Link>
           </div>
-
+{/* 
           <div
             className={`hidden md:flex items-center  ${defaultLang === "en" ? "md:flex space-x-7" : "md:flex-row-reverse md:pr-10"
               }`}
@@ -213,7 +213,7 @@ const Header = () => {
             <LanguageModal />
 
             <div className="xl:hidden block w-[45px]"></div>
-          </div>
+          </div> */}
 
           <div
             className={`absolute z-50  xl:hidden text-secondary h grid place-items-center   bg-white  w-[70px] h-full  ${defaultLang === "en" ? "right-0" : "left-0"}`}

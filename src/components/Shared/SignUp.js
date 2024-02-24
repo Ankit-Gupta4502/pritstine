@@ -11,13 +11,13 @@ const SignUp = () => {
   const { defaultLang } = useLayoutContext()
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
-  const { mutate,isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: () => axios.post("/api/newsletter", {}, {
       params: {
-        email_id:email
+        email_id: email
       }
     }).then(({ data }) => data),
-    onSuccess:(resp)=>{
+    onSuccess: (resp) => {
       toast.success("Signed up for newsletter")
       setEmail("")
     },
@@ -42,8 +42,9 @@ const SignUp = () => {
       <div className={`container relative z-20 flex flex-col  w-full h-[358px] md:justify-between    justify-center md:items-center xl:pr-40 xl:pl-20 mt-[130px] xl:mt-0 ${defaultLang === "en" ? "md:flex-row items-start" : "md:flex-row-reverse md:justify-between"}`}>
 
         <div>
-          <h3 className={`text-white  mb-6 ${defaultLang === "en" ? "w-[80%]" : "w-[100%]"}`}>{defaultLang === "en" ? "Sign up for our newsletter" : "سجل للحصول على اخر اخبارنا"}</h3>
-          <p className="text-sm text-white">{defaultLang === "en" ? "We are going to share only 2 mails per week" : "سنقوم بمشاركة رسالتين فقط في الأسبوع"}</p>
+          <h3 className={`text-white  mb-6 ${defaultLang === "en" ? "w-[80%]" : "w-[100%]"}`}>{defaultLang === "en" ? `Subscribe to our Newsletter For Exclusive Updates.
+`: "سجل للحصول على اخر اخبارنا"}</h3>
+          <p className=" text-white">{defaultLang === "en" ? "Rest assured, we'll not send more than two emails per week" : "سنقوم بمشاركة رسالتين فقط في الأسبوع"}</p>
         </div>
         <div className="xl:w-full max-w-[385px]" >
           <div className={`items-center   mt-5 md:mt-0   border-b-[1px] ${error ? "border-rose-600" : "border-white"} border-solid ${defaultLang === "en" ? "flex justify-between" : "flex flex-row-reverse justify-between text-end"}`}>
@@ -63,7 +64,7 @@ const SignUp = () => {
 
             </div>
 
-            <button disabled={isPending}  onClick={() => handleValidation() && mutate()} className={`flex text-white cursor-pointer items-center`}>{defaultLang === "en" ? "SUBMIT" : "يُقدِّم"}
+            <button disabled={isPending} onClick={() => handleValidation() && mutate()} className={`flex text-white cursor-pointer items-center`}>{defaultLang === "en" ? "SUBMIT" : "يُقدِّم"}
               <BsArrowRightShort size={20} />
             </button>
 
