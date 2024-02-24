@@ -24,7 +24,7 @@ const Services = ({services=[],categorySlug}) => {
       <h3 className={`container mb-[60px] text-primary mt-28 ${defaultLang==="en"?"text-left":"text-right"}`}> {defaultLang==="en"?"Our Dental Services":"خدمات طب الأسنان لدينا"}</h3>
       <div className="container grid md:grid-cols-2 grid-cols-1 lg:gap-[40px] md:gap-[30px] gap-[20px]">
         {services.map((service, index) => (
-          <div key={index} className="relative group overflow-hidden">
+          <Link href={`/treatments/${categorySlug}/${service?.slug}`} key={index} className="relative group overflow-hidden">
             <div className="relative xl:h-[400px] lg:h-[400px] md:h-[294px] h-[320px] xl:w-[690px] md:w-[442px] w-full">
 
             <Image src={`/basepath/${service?.banner?.image}`} layout="fill" alt={service?.service_name} className=" object-cover" />
@@ -34,14 +34,14 @@ const Services = ({services=[],categorySlug}) => {
               <p className="text-white max-w-[285px] text-center">
               We specialize in helping patients with dental hygiene and making their smiles look great
               </p>
-              <Link href={`/treatments/${categorySlug}/${service?.slug}`} className="flex space-x-4 justify-center items-center">
+              <div  className="flex space-x-4 justify-center items-center">
                 <div  className="bg-white text-secondary w-[36px] rounded-full grid place-items-center h-[36px]">
                   <IoIosArrowRoundForward />
                 </div>
                 <p className="text-white text-sm">Treatment</p>
-              </Link>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

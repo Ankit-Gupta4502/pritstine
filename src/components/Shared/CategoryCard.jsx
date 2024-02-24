@@ -20,7 +20,7 @@ const CategoryCard = ({
   );
   const containerStyle = twMerge(`relative ${borderOnHover ? "border-[1px] border-solid   hover:border-white  border-transparent " : ""} xl:h-[400px] lg:h-[400px] md:h-[294px] h-[320px]   group overflow-hidden`, containerClass)
   return (
-    <div className={containerStyle}>
+    <Link href={href} className={containerStyle}>
       <Image
         src={img}
         className={` object-cover ${imgClass}`}
@@ -30,14 +30,14 @@ const CategoryCard = ({
       <div style={{ background: `linear-gradient(180deg, rgba(10, 3, 24, 0.30) 38%, #071F34 100%)` }} className={cardInfo}>
         <h5 className="text-white font-medium">{title || ""}</h5>
         <p className="text-white max-w-[285px] text-center ">{desc}</p>
-        <Link href={href} className="flex space-x-4 justify-center items-center">
+        <div  className="flex space-x-4 justify-center items-center">
           <div className="bg-white text-secondary w-[36px] rounded-full grid place-items-center  h-[36px]">
             <IoIosArrowRoundForward />
           </div>
           <p className=" text-white text-sm ">{categoryName}</p>
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

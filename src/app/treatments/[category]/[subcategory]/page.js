@@ -65,27 +65,6 @@ const Page = async ({ params }) => {
 
               {data?.service_name}
             </span>
-
-            <div className="flex  font-normal  text-base space-x-2 items-center justify-center">
-              <Link href="/">
-                {lang === "en" ? "Home" : "بيت"}
-              </Link>
-
-              <span>
-                <MdChevronRight size={20} />
-              </span>
-
-              <Link href={`/treatments/${params.category}`}>
-                {data?.treatment?.treatment_name}
-              </Link>
-
-              <span>
-                <MdChevronRight size={20} />
-              </span>
-              <Link href={`/treatments/${params.category}/${params.subcategory}`}>
-                {data?.service_name}
-              </Link>
-            </div>
           </div>
         </div>
       </Hero>

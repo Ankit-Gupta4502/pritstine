@@ -27,7 +27,7 @@ const Techniques = ({ cards }) => {
               onMouseOver={() => setHoverIndex(1)}
               className={`border rounded-xl border-slate-200 py-[20px] px-[10px] xl:py-[30px] xl:px-[40px]   transition-all  duration-300 transform ${hoverIndex === 1 ? "border-b-[8px]  border-b-[#CA9050] shadow-xl" : ""}    mt-5 `}
             >
-              <h3 className="text-[24px] font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
+              <h3 className="text-[24px] capitalize font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
                 {" "}
                 {cards?.title1}
               </h3>
@@ -40,7 +40,7 @@ const Techniques = ({ cards }) => {
               onMouseOver={() => setHoverIndex(2)}
               className={`border rounded-xl border-slate-200 py-[20px] px-[10px] xl:py-[30px] xl:px-[40px]   transition-all  duration-300 transform ${hoverIndex === 2 ? "border-b-[8px]  border-b-[#CA9050] shadow-xl" : ""}    mt-5 `}
             >
-              <h3 className="text-[24px] font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
+              <h3 className="text-[24px] capitalize font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
                 {" "}
                 {cards?.title2}
               </h3>
@@ -56,7 +56,7 @@ const Techniques = ({ cards }) => {
               onMouseOver={() => setHoverIndex(3)}
               className={`border rounded-xl border-slate-200 py-[20px] px-[10px] xl:py-[30px] xl:px-[40px] transition-all duration-300 transform ${hoverIndex === 3 ? "border-b-[8px]  border-b-[#CA9050] shadow-xl" : ""}    mt-5 `}
             >
-              <h3 className="text-[24px] font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
+              <h3 className="text-[24px] capitalize font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
                 {" "}
                 {cards?.title3}
               </h3>
@@ -69,7 +69,7 @@ const Techniques = ({ cards }) => {
               onMouseOver={() => setHoverIndex(4)}
               className={`border rounded-xl border-slate-200 py-[20px] px-[10px] xl:py-[30px] xl:px-[40px]   transition-all  duration-300 transform ${hoverIndex === 4 ? "border-b-[8px]  border-b-[#CA9050] shadow-xl" : ""}    mt-5 `}
             >
-              <h3 className="text-[24px] font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
+              <h3 className="text-[24px] capitalize font-[600] leading-[26px] font-[K2D] text-[#071F34] mb-5">
                 {" "}
                 {cards?.title4}
               </h3>
