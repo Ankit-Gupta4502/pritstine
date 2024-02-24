@@ -14,11 +14,10 @@ const FreeConsult = ({ desc }) => {
         <div className="flex justify-center  items-center pt-20 relative z-20">
           <div className="text-center xl:max-w-[700px] md:max-w-[670px]">
             <h3 className=" font-normal text-white pb-5">
-              {defaultLang === "en" ? "How to get started?" : "كيف تبدأ؟"}
+              {defaultLang === "en" ? `World-class Dental and Healthcare Facility in Dubai` : "كيف تبدأ؟"}
             </h3>
             <span className="text-white text-center block">
               {desc}
-
             </span>
             <OpenModalButton
               label={` ${defaultLang === "en"
