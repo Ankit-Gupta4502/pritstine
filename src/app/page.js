@@ -91,7 +91,7 @@ export default async function Home() {
         renderTitle={formatText}
         desc={currlang === "en" ? "We offer dental services at a highly innovative level, with a guarantee for all treatments." : "نحن نقدم خدمات طب الأسنان بمستوى مبتكر للغاية، مع ضمان لجميع العلاجات."}
       >
-        <video className="md:h-[60vh] h-[50vh] w-full object-cover md:min-h-[563px] rounded-[24px] " src="/assets/hero_video.mp4" autoPlay loop muted controls />
+        <video playsInline className="md:h-[60vh] h-[50vh] w-full object-cover md:min-h-[563px] rounded-[24px] " src="/assets/hero_video.mp4" autoPlay loop muted controls />
       </Hero>
       <TryUs />
       <MainCategory />
