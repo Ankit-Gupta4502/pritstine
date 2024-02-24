@@ -20,7 +20,7 @@ const Categories = ({ isActive = false, setIsActive = () => true,setIsClicked })
     activeTimeout.current = setTimeout(() =>{ 
       setActive(id)
       setCord({ x: e.target.offsetLeft, width: e.target.getBoundingClientRect().width, slug })
-    }, 1000)
+    }, 500)
   }
 
 

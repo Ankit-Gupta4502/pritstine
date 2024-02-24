@@ -194,7 +194,6 @@ const Footer = () => {
               <Link href="/terms-and-conditions">
                 <p className="text-[#FFF] hover:translate-y-2 duration-150 text-[14px]">
                   {defaultLang==="en"?"Terms & Conditions":"سياسة الخصوصية"}
-                 
                 </p>
               </Link>
             </div>
