@@ -23,7 +23,7 @@ const Footer = () => {
           <div className="mt-5">
             <span className="text-[#7F7F7F]">
 
-              {defaultLang==="en"?"Looking for a experienced doctors? We’d love to help you.":"هل تبحث عن أطباء ذوي خبرة؟ نحن نحب أن نساعدك."}
+              {defaultLang==="en"?"Looking for experienced doctors? We’d love to help you.":"هل تبحث عن أطباء ذوي خبرة؟ نحن نحب أن نساعدك."}
             </span>
           </div>
           <div className="buttons mt-5">
