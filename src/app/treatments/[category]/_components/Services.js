@@ -21,7 +21,7 @@ const Services = ({services=[],categorySlug}) => {
   const defaultLang = cookieList.get("lang")?.value || "en"
   return (
     <>
-      <h3 className={`container mb-[60px] text-primary mt-28 ${defaultLang==="en"?"text-left":"text-right"}`}> {defaultLang==="en"?"Our Dental Services":"خدمات طب الأسنان لدينا"}</h3>
+      <h3 className={`container mb-[60px] text-primary mt-28 ${defaultLang==="en"?"text-left":"text-right"}`}> {defaultLang==="en"?"Our Services":"خدمات طب الأسنان لدينا"}</h3>
       <div className="container grid md:grid-cols-2 grid-cols-1 lg:gap-[40px] md:gap-[30px] gap-[20px]">
         {services.map((service, index) => (
           <Link href={`/treatments/${categorySlug}/${service?.slug}`} key={index} className="relative group overflow-hidden">
