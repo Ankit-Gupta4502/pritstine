@@ -185,12 +185,12 @@ const Footer = () => {
                 {defaultLang==="en"?"Privacy Policy":"البنود و الظروف"}
                 </p>
               </Link>
-              <Link href="/sitemap">
+              {/* <Link href="/sitemap">
                 <p className="text-[#FFF] hover:translate-y-2 duration-150 text-[14px]">
                   
                   {defaultLang==="en"?"Sitemap":"خريطة الموقع"}
                   </p>
-              </Link>
+              </Link> */}
               <Link href="/terms-and-conditions">
                 <p className="text-[#FFF] hover:translate-y-2 duration-150 text-[14px]">
                   {defaultLang==="en"?"Terms & Conditions":"سياسة الخصوصية"}
