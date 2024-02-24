@@ -179,7 +179,7 @@ const Footer = () => {
           </div>
           <div className="order-1 md:order-2 w-full md:w-auto lg:ml-0 lg:mr-8">
             <div className="flex space-x-3 lg:space-x-4 items-center justify-left md:mx-5">
-              <Link href="privacy-policy">
+              <Link href="/privacy-policy">
                 {" "}
                 <p className="text-[#FFF] hover:translate-y-2 duration-150 text-[14px]">
                 {defaultLang==="en"?"Privacy Policy":"البنود و الظروف"}
