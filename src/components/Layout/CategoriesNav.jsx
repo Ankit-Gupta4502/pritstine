@@ -9,7 +9,7 @@ import axios from 'axios';
 import useLayoutContext from '@/context/LayoutContext';
 import Link from '../Shared/Link';
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from '../UI/Tooltip';
-const Categories = ({ isActive = false, setIsActive = () => true }) => {
+const Categories = ({ isActive = false, setIsActive = () => true,setIsClicked }) => {
   const { defaultLang } = useLayoutContext()
   const [cord, setCord] = useState({ x: 35, width: defaultLang === "en" ? 136 : 97, slug: "" })
   const [active, setActive] = useState(1)
@@ -82,7 +82,11 @@ const Categories = ({ isActive = false, setIsActive = () => true }) => {
             data.map((category) => {
               return <Link href={`/treatments/${category?.slug}`} key={category._id} className={`  relative !ms-0  capitalize ${active === category._id ? "text-primary" : "text-gray"}`} role='button'
                 onMouseLeave={() => clearTimeout(activeTimeout.current)}
-                onClick={() => setIsActive(false)} onMouseOver={(e) => {
+                onClick={() =>{ 
+                  setIsClicked(true)
+                  setIsActive(false)
+                }} 
+                onMouseOver={(e) => {
                   handleCord(e, category._id, category?.slug)
                 }}>
                 {category?.treatment_name}

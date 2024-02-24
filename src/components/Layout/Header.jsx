@@ -23,6 +23,7 @@ const Header = () => {
   const [langMode, setLangMode] = useState(false);
   const hoverButton = useRef(null);
   const { defaultLang, setDefaultLang } = useLayoutContext();
+  const [isClicked,setIsClicked] = useState(false)
   const { refresh } = useRouter()
   const queryClient = useQueryClient()
 
@@ -72,8 +73,11 @@ const Header = () => {
             </Link>
             <div
               className="flex  z-20 relative space-x-2 items-center"
-              onMouseLeave={() => setIsActive(false)}
-              onMouseOver={() => setIsActive(true)}
+              onMouseLeave={() =>{ 
+                setIsActive(false)
+                setIsClicked(false)
+              } }
+              onMouseOver={() =>!isClicked && setIsActive(true)}
               ref={hoverButton}
             >
               <div>
@@ -93,7 +97,7 @@ const Header = () => {
                 <LuChevronDown />
               </span>
               <div className="absolute w-full h-[3.75rem] cursor-pointer  -bottom-[27px] bg-inherit z-10 " />
-              <CategoriesNav setIsActive={setIsActive} isActive={isActive} />
+              <CategoriesNav setIsClicked={setIsClicked} setIsActive={setIsActive} isActive={isActive} />
             </div>
 
             <Link href="/offers" className="text-white">
