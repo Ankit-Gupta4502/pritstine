@@ -12,9 +12,7 @@ const AboutUs = ({title="",desc="",image=""}) => {
   return (
     <>
     <div className="bg-[#FBFBFB] w-full">
-      <div className="flex text-primary justify-center items-center pt-[50px] cursor-pointer">
-      <AiOutlineArrowDown className="bounce-animate"/> SCROLL
-      </div>
+     
       <div className={`container max-w-[1232px]  py-10  flex justify-between flex-col items-center ${ defaultLang==="en"?"md:flex-row":"md:flex-row-reverse" }`}>
         <div className="w-full  max-w-[528px]">
           <h2 className="text-primary font-bold mb-10 w-full">
