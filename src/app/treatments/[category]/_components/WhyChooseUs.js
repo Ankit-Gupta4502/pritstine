@@ -11,7 +11,7 @@ const WhyChooseUs = ({title="",desc="",img1="",img2="",bulletPoints=[]}) => {
       <div className="container mx-auto flex-wrap flex justify-between md:mt-[9.4rem] md:mb-[14rem] mt-20  ">
         <div className=" w-full xl:w-2/4 md:w-[50%] xl:pl-10  xl:pt-20 md:pt-0">
           <h3 className="text-primary mb-5 line-clamp-3 md:text-[30px] xl:text-[48px] xl:leading-[45px] md:leading-9">{title}</h3>
-          <p className="pb-10">
+          <p className="pb-10 max-w-[600px]">
             {desc}
           </p>
           <div className="space-y-3 max-w-[600px] xl:space-y-3 md:space-y-2" >

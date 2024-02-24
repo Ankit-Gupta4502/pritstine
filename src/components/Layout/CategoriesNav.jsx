@@ -82,9 +82,11 @@ const Categories = ({ isActive = false, setIsActive = () => true,setIsClicked })
             data.map((category) => {
               return <Link href={`/treatments/${category?.slug}`} key={category._id} className={`  relative !ms-0  capitalize ${active === category._id ? "text-primary" : "text-gray"}`} role='button'
                 onMouseLeave={() => clearTimeout(activeTimeout.current)}
-                onClick={() =>{ 
+                onClick={(e) =>{ 
                   setIsClicked(true)
                   setIsActive(false)
+                  setActive(category._id)
+                  setCord({ x: e.target.offsetLeft, width: e.target.getBoundingClientRect().width, slug:category?.slug })
                 }} 
                 onMouseOver={(e) => {
                   handleCord(e, category._id, category?.slug)
