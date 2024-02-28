@@ -1,7 +1,7 @@
 const lang =  {
     en:{
-        title:"Can a trip to dentist be fun? Try Us!",
-        desc:" Patients at The Pristine are provided with personalized and friendly dental care. The Smilist Dental’s top-rated Orthodontists specialize in straightening smiles with comprehensive orthodontic treatments including Braces & Invisalign clear aligners."
+        title:"State-of-the-Art Dental Clinic and Cosmetic Treatments in Dubai ",
+        desc:"At Pristine Medical Center, we redefine healthcare by combining world-class expertise with a commitment to delivering personalised and compassionate care. Located in the heart of Dubai, our state-of-the-art clinic is your one-stop destination for a wide range of healthcare services, including general dentistry, cosmetic dentistry, orthodontics, laser hair removal, and general medicine."
     },
     arab:{
         title:"هل يمكن أن تكون الرحلة إلى طبيب الأسنان ممتعة؟ جربنا!",

@@ -79,7 +79,21 @@ export default async function Home() {
               </svg>
             </span>
           </span>
-          {currlang === "en" ? "with Pristine" : "بريستين"}
+          {currlang === "en" ? "and" : "بريستين"}
+
+
+          <span className={`${currlang === "en" ? "mx-[16px]" : "mx-[16px]"}  after:content-[""] after:absolute after:w-[90%] after:left-0 after:h-[30%] after:bg-primary after:opacity-[.4] after:bottom-2    w-max  text-primary  relative font-bold `}>
+            {currlang === "en" ? "skin" : "مع"}
+            <span className="absolute lg:top-3  top-2 lg:right-[-9px] -right-[15px] " >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M8.96223 0.00402961L11.7454 6.17374L17.9126 8.96248L11.7429 11.7457L8.95417 17.9129L6.17099 11.7432L0.00378289 8.95442L6.17349 6.17123L8.96223 0.00402961Z" fill="#CA9050" />
+              </svg>
+            </span>
+          </span>
+
+          into a Work of Art with PMC
+
+
         </h2>
       </StyledText>
     );
@@ -89,7 +103,7 @@ export default async function Home() {
       <Hero
         renderButton={() => <OpenModalButton />}
         renderTitle={formatText}
-        desc={currlang === "en" ? "We offer dental services at a highly innovative level, with a guarantee for all treatments." : "نحن نقدم خدمات طب الأسنان بمستوى مبتكر للغاية، مع ضمان لجميع العلاجات."}
+        desc={currlang === "en" ? "State-of-the Dermatology and Dental Clinic in Dubai." : "نحن نقدم خدمات طب الأسنان بمستوى مبتكر للغاية، مع ضمان لجميع العلاجات."}
       >
         <video playsInline className="md:h-[60vh] h-[50vh] w-full object-cover md:min-h-[563px] rounded-[24px] " src="/assets/hero_video.mp4" autoPlay loop muted controls />
       </Hero>
