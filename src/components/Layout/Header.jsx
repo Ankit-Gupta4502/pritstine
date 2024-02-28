@@ -1,5 +1,3 @@
-
-
 "use client";
 import Link from "../Shared/Link";
 import React, { useEffect, useRef, useState } from "react";
@@ -13,19 +11,18 @@ import { LanguageModal } from "./LanguageModal";
 import useLayoutContext from "@/context/LayoutContext";
 import NoSSR from "@/utils/NoSSR";
 import { setCookie } from "nookies";
-import { useRouter } from "next/navigation"
-import { useQueryClient } from "@tanstack/react-query"
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 const Header = () => {
-
   const [isActive, setIsActive] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [langMode, setLangMode] = useState(false);
   const hoverButton = useRef(null);
   const { defaultLang, setDefaultLang } = useLayoutContext();
-  const [isClicked,setIsClicked] = useState(false)
-  const { refresh } = useRouter()
-  const queryClient = useQueryClient()
+  const [isClicked, setIsClicked] = useState(false);
+  const { refresh } = useRouter();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     document.body.style.overflow =
@@ -33,91 +30,98 @@ const Header = () => {
   }, [isActive, isSidebarOpen]);
 
   const handleRefresh = (lang) => {
-    axios.defaults.params = {lang}
+    axios.defaults.params = { lang };
     queryClient.invalidateQueries({
-      refetchType: "all"
-    })
-  }
+      refetchType: "all",
+    });
+  };
 
   return (
     <div className=" bg-secondary  md:bg-secondary/80 relative  ">
       <div
-        className={`container  py-[9px]  flex  justify-between items-center ${defaultLang === "en" ? "flex" : "flex-row-reverse overflow-hidden"
-          }`}
+        className={`container  py-[9px]  flex  justify-between items-center ${
+          defaultLang === "en" ? "flex" : "flex-row-reverse overflow-hidden"
+        }`}
       >
         <div
-          className={`absolute z-[5] w-[295px] h-full bg-secondary   top-0 bottom-0 ${defaultLang === "en" ? "-left-[10px]" : "md:-right-0 hidden md:block"
-            }`}
+          className={`absolute z-[5] w-[295px] h-full bg-secondary   top-0 bottom-0 ${
+            defaultLang === "en"
+              ? "-left-[10px]"
+              : "md:-right-0 hidden md:block"
+          }`}
         ></div>
         <div className="relative z-10">
           <Link href="/">
-
             <Image
               alt="logo"
-              src="/assets/images/logo.svg"
+              src="/assets/images/pristine_logo.svg"
               priority
               width={196}
+              quality={100}
               height={62}
             />
           </Link>
         </div>
 
         <div
-          className={`flex items-center duration-200  ${defaultLang === "en" ? "flex space-x-12" : "flex-row-reverse space-x-0"
-            }`}
+          className={`flex items-center duration-200  ${
+            defaultLang === "en"
+              ? "flex space-x-12"
+              : "flex-row-reverse space-x-0"
+          }`}
         >
           <div className="xl:flex hidden duration-200  space-x-12 items-center">
+            <Link href="/" className="text-white">
+              Home
+            </Link>
             <Link href="/news-room" className="text-white">
-
               {defaultLang === "en" ? "Newsroom" : "غرفة الأخبار"}
             </Link>
             <div
               className="flex  z-20 relative space-x-2 items-center"
-              onMouseLeave={() =>{ 
-                setIsActive(false)
-                setIsClicked(false)
-              } }
-              onMouseOver={() =>!isClicked && setIsActive(true)}
+              onMouseLeave={() => {
+                setIsActive(false);
+                setIsClicked(false);
+              }}
+              onMouseOver={() => !isClicked && setIsActive(true)}
               ref={hoverButton}
             >
               <div>
-                  <span
-                    role="button"
-                    className="text-white  relative z-30  cursor-pointer "
-                  >
-
-                    {defaultLang === "en" ? "Treatments" : "العلاجات"}
-                  </span>
-               
+                <span
+                  role="button"
+                  className="text-white  relative z-30  cursor-pointer "
+                >
+                  {defaultLang === "en" ? "Treatments" : "العلاجات"}
+                </span>
               </div>
               <span
-                className={`text-white duration-300 relative z-30 ${isActive ? "rotate-180" : "rotate-0"
-                  }`}
+                className={`text-white duration-300 relative z-30 ${
+                  isActive ? "rotate-180" : "rotate-0"
+                }`}
               >
                 <LuChevronDown />
               </span>
               <div className="absolute w-full h-[3.75rem] cursor-pointer  -bottom-[27px] bg-inherit z-10 " />
-              <CategoriesNav setIsClicked={setIsClicked} setIsActive={setIsActive} isActive={isActive} />
+              <CategoriesNav
+                setIsClicked={setIsClicked}
+                setIsActive={setIsActive}
+                isActive={isActive}
+              />
             </div>
 
             <Link href="/offers" className="text-white">
-
-
               {defaultLang === "en" ? "Offers" : "معلومات عنا"}
             </Link>
 
             <Link href="/about-us" className="text-white">
-
-
               {defaultLang === "en" ? "About Us" : "معلومات عنا"}
             </Link>
 
             <Link href="/blog" className="text-white">
-
               {defaultLang === "en" ? "Blog" : "مدونة"}
             </Link>
           </div>
-{/* 
+          {/* 
           <div
             className={`hidden md:flex items-center  ${defaultLang === "en" ? "md:flex space-x-7" : "md:flex-row-reverse md:pr-10"
               }`}
@@ -216,14 +220,14 @@ const Header = () => {
           </div> */}
 
           <div
-            className={`absolute z-50  xl:hidden text-secondary h grid place-items-center   bg-white  w-[70px] h-full  ${defaultLang === "en" ? "right-0" : "left-0"}`}
+            className={`absolute z-50  xl:hidden text-secondary h grid place-items-center   bg-white  w-[70px] h-full  ${
+              defaultLang === "en" ? "right-0" : "left-0"
+            }`}
             onClick={() => setIsSidebarOpen(true)}
           >
             <RxHamburgerMenu />
           </div>
         </div>
-
-       
       </div>
       <Sidebar
         isSidebarOpen={isSidebarOpen}
