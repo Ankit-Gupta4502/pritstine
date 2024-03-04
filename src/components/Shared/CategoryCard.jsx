@@ -29,12 +29,12 @@ const CategoryCard = ({
       />
       <div style={{ background: `linear-gradient(180deg, rgba(10, 3, 24, 0.30) 38%, #071F34 100%)` }} className={cardInfo}>
         <h5 className="text-white font-medium">{title || ""}</h5>
-        <p className="text-white max-w-[285px] text-center ">{desc}</p>
+        <p className="text-white  line-clamp-3 text-center px-8 min-h-[67px] ">{desc}</p>
         <div  className="flex space-x-4 justify-center items-center">
           <div className="bg-white text-secondary w-[36px] rounded-full grid place-items-center  h-[36px]">
             <IoIosArrowRoundForward />
           </div>
-          <p className=" text-white text-sm ">{categoryName}</p>
+          <p className="text-white text-sm ">{categoryName}</p>
         </div>
       </div>
     </Link>

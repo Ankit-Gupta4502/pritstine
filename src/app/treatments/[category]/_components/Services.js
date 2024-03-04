@@ -31,8 +31,8 @@ const Services = ({services=[],categorySlug}) => {
             </div>
             <div style={{ background: `linear-gradient(180deg, rgba(10, 3, 24, 0.30) 38%, #071F34 100%)` }} className="flex top-0 justify-end -bottom-[42%]  md:bottom-[-34%] space-y-3 pb-[20px] duration-200    ease-linear  group-hover:bottom-0 items-center justify-content-center bg-gradient-to-b from-0% to-[100%]   from-transparent to-[rgba(0,0,0,.7)] flex-col absolute left-0 right-0">
               <h5 className="text-white font-medium">{service.service_name}</h5>
-              <p className="text-white max-w-[285px] text-center">
-              We specialize in helping patients with dental hygiene and making their smiles look great
+              <p className="text-white line-clamp-3 text-center px-8 min-h-[67px]  ">
+             {service?.short_desc}
               </p>
               <div  className="flex space-x-4 justify-center items-center">
                 <div  className="bg-white text-secondary w-[36px] rounded-full grid place-items-center h-[36px]">

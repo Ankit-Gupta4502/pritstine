@@ -38,8 +38,9 @@ const MainCategory = async () => {
                                 borderOnHover
                                 categoryName={"Treatment"}
                                 href={`/treatments/${item.slug}`}
-                                desc={currLang === "en" ? "We specialize in helping patients with dental hygiene and making their smiles look great" : `نحن متخصصون في مساعدة المرضى فيما يتعلق بصحة الأسنان وجعل ابتساماتهم تبدو رائعة
+                                desc={currLang === "en" ? item.short_desc : `نحن متخصصون في مساعدة المرضى فيما يتعلق بصحة الأسنان وجعل ابتساماتهم تبدو رائعة
                                 `}
+
                                 cardBodyClassName="space-y-6 bottom-[-46%] "
                                 title={item?.treatment_name}
                                 containerClass='xl:h-[460px]  rounded-[3px] h-[320px]' img={item?.banner?.image ? `/basepath/${item?.banner?.image}` : '/assets/images/category_5.png'}
