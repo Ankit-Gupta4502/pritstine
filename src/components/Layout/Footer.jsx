@@ -7,8 +7,13 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { FiFacebook } from "react-icons/fi";
 import { LuInstagram } from "react-icons/lu";
 import useLayoutContext from "@/context/LayoutContext";
+import { usePathname } from "next/navigation";
 const Footer = () => {
   const {defaultLang} = useLayoutContext()
+  const path = usePathname()
+  if (path.includes("/coming-soon")) {
+    return null
+  }
   return (
     <>
       <div className={`name bg-secondary pb-5 pt-10 max-w-[1512px] mx-auto w-full ${defaultLang==="en"?"mx-auto":"md:px-20 px-5"}

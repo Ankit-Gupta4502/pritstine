@@ -125,6 +125,15 @@
     @apply bottom-2;
   }
 
+  @keyframes waviy {
+    0%,40%,100% {
+      transform: translateY(0)
+    }
+    20% {
+      transform: translateY(-20px)
+    }
+  }
+
 
   .highlight-text span {
     @apply text-primary;
@@ -138,5 +147,5 @@
   .timer-only-container  div.react-datepicker__time-container .react-datepicker__time-list{
     padding-right: 2px !important;
   }
-
+  
 }

@@ -11,7 +11,7 @@ import { LanguageModal } from "./LanguageModal";
 import useLayoutContext from "@/context/LayoutContext";
 import NoSSR from "@/utils/NoSSR";
 import { setCookie } from "nookies";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 const Header = () => {
@@ -23,7 +23,7 @@ const Header = () => {
   const [isClicked, setIsClicked] = useState(false);
   const { refresh } = useRouter();
   const queryClient = useQueryClient();
-
+  const path = usePathname();
   useEffect(() => {
     document.body.style.overflow =
       isActive || isSidebarOpen ? "hidden" : "visible";
@@ -35,6 +35,8 @@ const Header = () => {
       refetchType: "all",
     });
   };
+
+  const isHide = path.includes("/coming-soon");
 
   return (
     <div className=" bg-secondary  md:bg-secondary/80 relative  ">
@@ -51,7 +53,7 @@ const Header = () => {
           }`}
         ></div>
         <div className="relative z-10">
-          <Link href="/">
+          <Link href={isHide ? "#" : "/"}>
             <Image
               alt="logo"
               src="/assets/images/pristine_logo.svg"
@@ -63,65 +65,66 @@ const Header = () => {
           </Link>
         </div>
 
-        <div
-          className={`flex items-center duration-200  ${
-            defaultLang === "en"
-              ? "flex space-x-12"
-              : "flex-row-reverse space-x-0"
-          }`}
-        >
-          <div className="xl:flex hidden duration-200  space-x-12 items-center">
-            <Link href="/" className="text-white">
-              Home
-            </Link>
-            <Link href="/news-room" className="text-white">
-              {defaultLang === "en" ? "Newsroom" : "غرفة الأخبار"}
-            </Link>
-            <div
-              className="flex  z-20 relative space-x-2 items-center"
-              onMouseLeave={() => {
-                setIsActive(false);
-                setIsClicked(false);
-              }}
-              onMouseOver={() => !isClicked && setIsActive(true)}
-              ref={hoverButton}
-            >
-              <div>
-                <span
-                  role="button"
-                  className="text-white  relative z-30  cursor-pointer "
-                >
-                  {defaultLang === "en" ? "Treatments" : "العلاجات"}
-                </span>
-              </div>
-              <span
-                className={`text-white duration-300 relative z-30 ${
-                  isActive ? "rotate-180" : "rotate-0"
-                }`}
+        {!isHide && (
+          <div
+            className={`flex items-center duration-200  ${
+              defaultLang === "en"
+                ? "flex space-x-12"
+                : "flex-row-reverse space-x-0"
+            }`}
+          >
+            <div className="xl:flex hidden duration-200  space-x-12 items-center">
+              <Link href="/" className="text-white">
+                Home
+              </Link>
+              <Link href="/news-room" className="text-white">
+                {defaultLang === "en" ? "Newsroom" : "غرفة الأخبار"}
+              </Link>
+              <div
+                className="flex  z-20 relative space-x-2 items-center"
+                onMouseLeave={() => {
+                  setIsActive(false);
+                  setIsClicked(false);
+                }}
+                onMouseOver={() => !isClicked && setIsActive(true)}
+                ref={hoverButton}
               >
-                <LuChevronDown />
-              </span>
-              <div className="absolute w-full h-[3.75rem] cursor-pointer  -bottom-[27px] bg-inherit z-10 " />
-              <CategoriesNav
-                setIsClicked={setIsClicked}
-                setIsActive={setIsActive}
-                isActive={isActive}
-              />
+                <div>
+                  <span
+                    role="button"
+                    className="text-white  relative z-30  cursor-pointer "
+                  >
+                    {defaultLang === "en" ? "Treatments" : "العلاجات"}
+                  </span>
+                </div>
+                <span
+                  className={`text-white duration-300 relative z-30 ${
+                    isActive ? "rotate-180" : "rotate-0"
+                  }`}
+                >
+                  <LuChevronDown />
+                </span>
+                <div className="absolute w-full h-[3.75rem] cursor-pointer  -bottom-[27px] bg-inherit z-10 " />
+                <CategoriesNav
+                  setIsClicked={setIsClicked}
+                  setIsActive={setIsActive}
+                  isActive={isActive}
+                />
+              </div>
+
+              <Link href="/offers" className="text-white">
+                {defaultLang === "en" ? "Offers" : "معلومات عنا"}
+              </Link>
+
+              <Link href="/about-us" className="text-white">
+                {defaultLang === "en" ? "About Us" : "معلومات عنا"}
+              </Link>
+
+              <Link href="/blog" className="text-white">
+                {defaultLang === "en" ? "Blog" : "مدونة"}
+              </Link>
             </div>
-
-            <Link href="/offers" className="text-white">
-              {defaultLang === "en" ? "Offers" : "معلومات عنا"}
-            </Link>
-
-            <Link href="/about-us" className="text-white">
-              {defaultLang === "en" ? "About Us" : "معلومات عنا"}
-            </Link>
-
-            <Link href="/blog" className="text-white">
-              {defaultLang === "en" ? "Blog" : "مدونة"}
-            </Link>
-          </div>
-          {/* 
+            {/* 
           <div
             className={`hidden md:flex items-center  ${defaultLang === "en" ? "md:flex space-x-7" : "md:flex-row-reverse md:pr-10"
               }`}
@@ -219,15 +222,16 @@ const Header = () => {
             <div className="xl:hidden block w-[45px]"></div>
           </div> */}
 
-          <div
-            className={`absolute z-50  xl:hidden text-secondary h grid place-items-center   bg-white  w-[70px] h-full  ${
-              defaultLang === "en" ? "right-0" : "left-0"
-            }`}
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <RxHamburgerMenu />
+            <div
+              className={`absolute z-50  xl:hidden text-secondary h grid place-items-center   bg-white  w-[70px] h-full  ${
+                defaultLang === "en" ? "right-0" : "left-0"
+              }`}
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <RxHamburgerMenu />
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <Sidebar
         isSidebarOpen={isSidebarOpen}
