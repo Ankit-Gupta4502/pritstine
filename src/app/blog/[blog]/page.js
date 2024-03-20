@@ -12,7 +12,7 @@ const getBlogDetail = async (slug) => {
   const cookieList = cookies()
   try {
     const lang = cookieList.get("lang")?.value ||"en"
-    const { data } = await axios(`https://pristine.amazonpro.in/api/post_detail`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/post_detail`, {
       params: {
         lang,
         slug
@@ -51,7 +51,7 @@ const getRelatedBlogs = async (slug) => {
   try {
     const cookieList = cookies()
     const lang = cookieList.get("lang")?.value
-    const { data } = await axios(`https://pristine.amazonpro.in/api/related_post`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/related_post`, {
       params: {
         lang,
         slug

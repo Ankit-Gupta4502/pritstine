@@ -11,7 +11,7 @@ import Link from "@/components/Shared/Link";
 const getNewsDetail = async (slug) => {
   const lang = cookies().get("lang")?.value || "en"
   try {
-    const { data } = await axios("https://pristine.amazonpro.in/api/news_detail", {
+    const { data } = await axios("https://pristine.dphexabells.com/api/news_detail", {
       params: {
         lang,
         slug
@@ -27,7 +27,7 @@ const getNewsDetail = async (slug) => {
 const getRelatedArticles = async (slug) => {
   const lang = cookies().get("lang")?.value || "en"
   try {
-    const { data } = await axios("https://pristine.amazonpro.in/api/related_news", {
+    const { data } = await axios("https://pristine.dphexabells.com/api/related_news", {
       params: {
         lang,
         slug

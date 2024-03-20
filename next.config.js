@@ -5,7 +5,7 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'pristine.amazonpro.in',
+            hostname: 'pristine.dphexabells.com',
             port: '',
             pathname: '/image/**',
           },
@@ -15,11 +15,11 @@ const nextConfig = {
         return [
             {
                 source: "/api/:path*",
-                destination: "https://pristine.amazonpro.in/api/:path*"
+                destination: "https://pristine.dphexabells.com/api/:path*"
             },
             {
                 source:"/basepath/:path*",
-                destination:"https://pristine.amazonpro.in/image/:path*"
+                destination:"https://pristine.dphexabells.com/image/:path*"
             }
         ]
     },

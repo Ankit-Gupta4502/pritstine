@@ -13,7 +13,7 @@ const getTeams = async () => {
     const cookie = cookies();
     const currLang = cookie.get("lang")?.value || "en"; 
     const { data } = await axios(
-      `https://pristine.amazonpro.in/api/team_list`,
+      `https://pristine.dphexabells.com/api/team_list`,
       {
         params: {
           lang: currLang,

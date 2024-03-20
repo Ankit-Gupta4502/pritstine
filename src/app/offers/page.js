@@ -8,7 +8,7 @@ const getOffers = async () => {
   const cookie = cookies()
   const currLang = cookie.get("lang")?.value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/offer`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/offer`, {
       params: {
         lang: currLang
       }

@@ -6,7 +6,7 @@ const getSitmaps = async () => {
   const cookie = cookies()
   const currLang = cookie.get("lang")?.value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/sitemapt`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/sitemapt`, {
       params: {
         lang: currLang
       }

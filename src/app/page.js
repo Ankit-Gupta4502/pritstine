@@ -16,7 +16,7 @@ const getTeams = async () => {
   const cookie = cookies()
   const currLang = cookie.get("lang")?.value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/team_list`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/team_list`, {
       params: {
         lang: currLang
       }
@@ -33,7 +33,7 @@ const getTreatments = async () => {
   const cookie = cookies()
   const currLang = cookie.get("lang")?.value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/review`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/review`, {
       params: {
         lang: currLang
       }
@@ -50,7 +50,7 @@ const getFeaturedArticles = async () => {
   const cookie = cookies()
   const currLang = cookie.get("lang")?.value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/featured_article`, {
+    const { data } = await axios(`https://pristine.dphexabells.com/api/featured_article`, {
       params: {
         lang: currLang
       }

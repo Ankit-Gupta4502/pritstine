@@ -11,7 +11,7 @@ const getCategories = async () => {
     const cookie = cookies()
     try {
         const currLang = cookie.get("lang")?.value || "en"
-        const { data = [] } = await axios("https://pristine.amazonpro.in/api/treatment_list", {
+        const { data = [] } = await axios("https://pristine.dphexabells.com/api/treatment_list", {
             params: {
                 lang: currLang
             }

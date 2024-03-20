@@ -18,7 +18,7 @@ const getsubCategoryDetail = async (slug) => {
   const cookiesList = cookies()
   const lang = cookiesList.get("lang").value || "en"
   try {
-    const { data } = await axios(`https://pristine.amazonpro.in/api/service_details
+    const { data } = await axios(`https://pristine.dphexabells.com/api/service_details
     `, {
       params: {
         lang,

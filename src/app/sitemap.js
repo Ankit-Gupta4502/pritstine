@@ -3,7 +3,7 @@ import axios from "axios"
 
 export default async function sitemap() {
     try {
-        const { data } = await axios("https://pristine.amazonpro.in/api/sitemap")
+        const { data } = await axios("https://pristine.dphexabells.com/api/sitemap")
         console.log(data, "sitemap data");
         const links = data?.data?.map((item) => ({
             url: item.url,
