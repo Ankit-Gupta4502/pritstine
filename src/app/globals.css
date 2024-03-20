@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;1,300&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,15 +10,14 @@
     font-family: "Nunito Sans";
   }
 
-
   .no-scrollbar::-webkit-scrollbar {
     display: none;
-}
+  }
 
-.no-scrollbar {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-}
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
   h1,
   h2,
@@ -76,7 +75,6 @@
   }
 
   @keyframes bounce {
-
     0%,
     100% {
       transform: translateY(0);
@@ -88,17 +86,14 @@
   }
 
   .bounce-animate {
-
     animation: bounce 2s infinite;
   }
-
 
   h2.hero-text span {
     position: relative;
     width: max-content;
     @apply text-primary;
   }
-
 
   h2.hero-text span::before {
     content: "";
@@ -112,40 +107,38 @@
     top: 4px;
   }
 
-
-
   h2.hero-text span::after {
     content: "";
     position: absolute;
     left: 0;
     @apply w-full;
-    opacity: .4;
+    opacity: 0.4;
     height: 30%;
     @apply bg-primary;
     @apply bottom-2;
   }
 
-  @keyframes waviy {
-    0%,40%,100% {
-      transform: translateY(0)
-    }
-    20% {
-      transform: translateY(-20px)
-    }
-  }
-
-
   .highlight-text span {
     @apply text-primary;
-    @apply font-[K2D]
+    @apply font-[K2D];
   }
 
-  .timer-only-container  div.react-datepicker__time-container  {
+  .timer-only-container div.react-datepicker__time-container {
     width: 140px !important;
   }
 
-  .timer-only-container  div.react-datepicker__time-container .react-datepicker__time-list{
+  .timer-only-container
+    div.react-datepicker__time-container
+    .react-datepicker__time-list {
     padding-right: 2px !important;
   }
-  
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }

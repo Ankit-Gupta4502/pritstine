@@ -31,8 +31,8 @@ const EmailNotify = () => {
 
   useEffect(() => {
     const listener = window.addEventListener("click", (e) => {
-      if (e.target.contains(input.current)) {
-        setShowInput((prev) => (prev ? false : false));
+      if (!e.target.closest(".email-wrapper")) {
+        setShowInput(false);
       }
     });
     return () => removeEventListener("click", listener);
@@ -43,7 +43,7 @@ const EmailNotify = () => {
     if (showMssg) {
       id = input.current.style.transition = "all .5s";
       setTimeout(() => {
-        input.current.style.transform = "scale(0)";
+        input.current.style.opacity = "0";
       }, 2000);
     }
     return () => id && clearTimeout(id);
@@ -52,10 +52,9 @@ const EmailNotify = () => {
   const handleToggle = () => {
     setShowInput(true);
   };
-
   return (
     <div
-      className={` fixed group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center bottom-20   overflow-hidden  left-auto right-auto mx-auto ease-linear  rounded-[30px] bg-primary   h-[56px]  `}
+      className={`email-wrapper fixed group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center bottom-20   overflow-hidden  left-auto right-auto mx-auto ease-linear  z-30 rounded-[30px] bg-primary   h-[56px]  `}
       ref={input}
     >
       <div className="flex px-[10px]   flex-shrink-0 items-center">
@@ -98,6 +97,7 @@ const EmailNotify = () => {
             showInput ? " bg-white text-primary" : "text-white"
           }  ${isSuccess?" max-w-[0px] ":"max-w-[124px] px-[10px]"}  overflow-hidden`}
           onClick={() => {
+            console.log("workingggg");
             if (!showInput) {
               handleToggle();
             }
