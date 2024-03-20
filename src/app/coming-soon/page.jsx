@@ -1,104 +1,50 @@
-"use client";
 import EmailNotify from "@/components/Layout/EmailNotify";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 const ComingSoon = () => {
-  const phase = [
-    "I",
-    "l",
-    "l",
-    "u",
-    "m",
+  const str = [
+    "O",
+    "p",
+    "e",
+    "n",
     "i",
     "n",
-    "a",
-    "t",
-    "e",
-    "",
-    "Y",
-    "o",
-    "u",
-    "r",
-    "",
+    "g",
+    "  ",
     "S",
-    "m",
-    "i",
-    "l",
-    "e",
-    "",
-    "a",
-    "n",
-    "d",
-    "",
-    "G",
-    "l",
+    "h",
     "o",
-    "w",
-  ];
-  const animateParent = useRef(null);
-
-  useEffect(() => {
-    if (animateParent.current?.children) {
-      [...animateParent.current.children].forEach((node) => {
-        node.addEventListener("animationend", () => {
-          node.style.opacity = "1";
-        });
-      });
-    }
-  }, [animateParent]);
-
-
+    "r",
+    "t",
+    "l",
+    "y"
+  ]
   return (
-    <div className=" relative min-h-[calc(100vh-80px)] flex justify-center flex-col  items-center ">
-      <div className="relative z-30  w-full -mt-10">
-        <div className="overflow-hidden w-full">
-          <h1
-            style={{
-              WebkitTextStroke: "1px #fff",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-            }}
-            className=" leading-loose text-4xl  py-3 text-center   mix-blend-screen  whitespace-nowrap   font-semibold md:h-40   md:text-9xl  relative z-10"
-          >
-            Coming Soon
-          </h1>
-        </div>
-        <div
-          ref={animateParent}
-          className="  tracking-[-3px] mx-auto text-center mt-10"
-        >
-          {phase.map((item, ind) => {
-            return (
-              <span
-                key={ind}
-                style={{ animationDelay: `${0.1 * ind + 0.5}s` }}
-                className={` animate-text opacity-0 animate-[fade_.5s_ease-in] font-['K2D']   text-white font-semibold text-4xl  ${
-                  !item ? " mx-2 " : ""
-                } `}
-              >
-                {" "}
-                {item}{" "}
-              </span>
-            );
-          })}
-        </div>
-        <h5 className=" mt-10  font-['K2D'] text-center  text-white font-semibold text-2xl">
-          Stay Tuned
-        </h5>
+    <div className=" relative min-h-[calc(100vh-100px)] grid  justify-center ">
+      <div className=" relative z-30 pt-16" >
+      <h5 className=" mb-10 font-['K2D'] italic text-center  text-white font-semibold text-3xl " >Designing Your Aesthetic & Health Clinic </h5>
+      <div className="      mx-auto w-max   flex">
+        {str.map((item, ind) => {
+          return (
+            <span
+              key={ind}
+              style={{ animationDelay: `${0.2 * ind+.2}s` }}
+              className={` font-bold relative text-white  text-7xl    animate-[waviy_2.5s_ease-in-out_infinite]     ${ ind===6?" mx-1 ":"" }`}
+            >
+              {item}
+            </span>
+          );
+        })}
+      </div>
       </div>
 
-      <video
-        className="object-cover  z-10  w-full h-full absolute   "
-        autoPlay
-        muted
-        loop
-        preload="true"
-      >
-        <source src="/assets/coming_soon.mp4" />
-      </video>
-      <EmailNotify />
+      <h5 className="  relative z-20 italic mt-32 whit font-['K2D'] text-center  text-white font-semibold text-2xl" >Stay Tuned</h5>
+      <EmailNotify/>
+
+      <video className=" absolute inset-0 object-cover" src="/assets/coming_soon.mp4" loop muted autoPlay preload="true"></video>
     </div>
   );
 };
 
 export default ComingSoon;
+

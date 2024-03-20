@@ -133,12 +133,17 @@
     padding-right: 2px !important;
   }
 
-  @keyframes fade {
-    0% {
-      opacity: 0;
+
+  @keyframes waviy {
+    0%,40%,100% {
+      transform: translateY(0)
     }
-    100% {
-      opacity: 1;
+    20% {
+      transform: translateY(-20px)
     }
   }
+
+
+
+ 
 }

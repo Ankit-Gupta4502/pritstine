@@ -65,7 +65,7 @@ const EmailNotify = () => {
   console.log(error,"error");
   return (
     <div
-      className={`email-wrapper fixed group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center bottom-20   overflow-hidden  left-auto right-auto mx-auto ease-linear  z-30 rounded-[30px] bg-primary   h-[56px]  `}
+      className={`email-wrapper fixed group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center bottom-20   overflow-hidden  left-2/4 -translate-x-2/4 ease-linear  z-30 rounded-[30px] bg-primary   h-[56px]  `}
       ref={input}
     >
       <div className="flex px-[10px]   flex-shrink-0 items-center">
