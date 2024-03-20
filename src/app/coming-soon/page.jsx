@@ -1,21 +1,51 @@
-"use client"
+"use client";
 import EmailNotify from "@/components/Layout/EmailNotify";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const ComingSoon = () => {
-  const phase = [ 'I', 'l', 'l', 'u', 'm', 'i', 'n', 'a', 't', 'e', '', 'Y', 'o', 'u', 'r', '', 'S', 'm', 'i', 'l', 'e', '', 'a', 'n', 'd', '', 'G', 'l', 'o', 'w' ]
-  
+  const phase = [
+    "I",
+    "l",
+    "l",
+    "u",
+    "m",
+    "i",
+    "n",
+    "a",
+    "t",
+    "e",
+    "",
+    "Y",
+    "o",
+    "u",
+    "r",
+    "",
+    "S",
+    "m",
+    "i",
+    "l",
+    "e",
+    "",
+    "a",
+    "n",
+    "d",
+    "",
+    "G",
+    "l",
+    "o",
+    "w",
+  ];
+  const animateParent = useRef(null);
 
-  useEffect(()=>{
-   const nodes =  document.querySelectorAll(".animate-text")
-   console.log(nodes);
-   nodes.forEach((node)=>{
-    node.addEventListener("animationend",()=>{
-      console.log("working");
-      node.style.opacity = "1"
-    })
-   })
-  },[])
+  useEffect(() => {
+    if (animateParent.current?.children) {
+      [...animateParent.current.children].forEach((node) => {
+        node.addEventListener("animationend", () => {
+          node.style.opacity = "1";
+        });
+      });
+    }
+  }, [animateParent]);
 
 
   return (
@@ -33,13 +63,18 @@ const ComingSoon = () => {
             Coming Soon
           </h1>
         </div>
-        <div className="  tracking-[-3px] mx-auto text-center mt-10">
+        <div
+          ref={animateParent}
+          className="  tracking-[-3px] mx-auto text-center mt-10"
+        >
           {phase.map((item, ind) => {
             return (
               <span
                 key={ind}
-                style={{animationDelay:`${0.1*ind+.5}s`}}
-                className={` animate-text opacity-0 animate-[fade_.5s_ease-in] font-['K2D']   text-white font-semibold text-4xl  ${!item?" mx-2 ":""} `}
+                style={{ animationDelay: `${0.1 * ind + 0.5}s` }}
+                className={` animate-text opacity-0 animate-[fade_.5s_ease-in] font-['K2D']   text-white font-semibold text-4xl  ${
+                  !item ? " mx-2 " : ""
+                } `}
               >
                 {" "}
                 {item}{" "}
