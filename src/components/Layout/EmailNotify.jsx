@@ -64,7 +64,7 @@ const EmailNotify = () => {
   };
   return (
     <div
-      className={`email-wrapper  absolute group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center top-[62vh]   overflow-hidden  left-10  ease-linear  z-30 rounded-[30px] bg-primary   h-[56px]  `}
+      className={`email-wrapper  absolute group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center top-[calc(62vh+35px)]   overflow-hidden  left-10  ease-linear  z-30 rounded-[30px] bg-primary   h-[56px]  `}
       ref={input}
     >
       <div className="flex px-[10px]   flex-shrink-0 items-center">
