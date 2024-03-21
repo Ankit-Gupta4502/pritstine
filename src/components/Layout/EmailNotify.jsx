@@ -10,6 +10,7 @@ const EmailNotify = () => {
   const [email, setEmail] = useState("");
   const [showMssg, setShowMssg] = useState(false);
   const [error, setErrors] = useState("");
+  const [startHover, setStartHover] = useState(false);
   const { isPending, isSuccess, mutate } = useMutation({
     mutationFn: () =>
       axios
@@ -47,21 +48,18 @@ const EmailNotify = () => {
     });
     return () => removeEventListener("click", listener);
   }, []);
+  const handleToggle = () => {
+    setShowInput(true);
+  };
 
   useEffect(() => {
     let id;
     if (showMssg) {
-      id = input.current.style.transition = "all .5s";
-      setTimeout(() => {
-        input.current.style.opacity = "0";
-      }, 2000);
+      id = setTimeout(() => setStartHover(true), 1000);
     }
-    return () => id && clearTimeout(id);
-  }, [showMssg]);
 
-  const handleToggle = () => {
-    setShowInput(true);
-  };
+    return () => clearTimeout(id);
+  }, [showMssg]);
   return (
     <div className=" absolute z-30 top-[60vh] left-10">
       <span className="text-2xl   text-white  mb-5  font-semibold block ">
@@ -83,9 +81,13 @@ const EmailNotify = () => {
             )}
           </div>
 
-           <div
+          <div
             className={` ${
-              showMssg ? " max-w-[300px] ml-3 " : "max-w-[0px]"
+              !startHover && showMssg
+                ? " max-w-[300px] ml-3 "
+                : startHover
+                ? " group-hover:max-w-[300px] group-hover:ml-3 max-w-[0px]"
+                : "max-w-[0px]"
             } overflow-hidden text-white transition-all whitespace-nowrap duration-300 ease-linear`}
           >
             Thank you we will Notify you soon
