@@ -36,7 +36,7 @@ const Header = () => {
     });
   };
 
-  const isHide = path.includes("/coming-soon");
+  const isHide = path.includes("/coming-soon") || path==="/";
 
   return (
     <div className=" bg-secondary  md:bg-secondary/80 relative  ">
