@@ -14,12 +14,11 @@ const ComingSoon = () => {
         autoPlay
         preload="true"
       >
-        {/* desktop */}
+        {/* desktop default */}
         <source src="/assets/coming_soon.mp4" type="video/mp4" />
 
         {/* mobile video */}
         <source
-      
           src="/assets/coming_soon.mp4"
           type="video/mp4"
           media="(max-width:833px)"
