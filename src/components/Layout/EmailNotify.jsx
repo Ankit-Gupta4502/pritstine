@@ -5,7 +5,7 @@ import { FiChevronRight } from "react-icons/fi";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { IoMdCheckmark } from "react-icons/io";
-import WOW from 'wowjs';
+
 const EmailNotify = () => {
   const [showInput, setShowInput] = useState(false);
   const [email, setEmail] = useState("");
@@ -61,20 +61,13 @@ const EmailNotify = () => {
 
     return () => clearTimeout(id);
   }, [showMssg]);
-
-
-  useEffect(() => {
-    new WOW.WOW({
-      live: false
-    }).init();
-  }, [])
   return (
     <>
       <div className="absolute top-[40vh] z-30 left-5   md:hidden block ">
         <p
-          className="font-semibold wow slideInLeft text-white -top-60 italic bg-slate-50  p-4 rounded-[6px]"
+          className="font-semibold text-white -top-60 italic bg-slate-50  p-4 rounded-[6px]"
           style={{ backgroundColor: "rgb(248 250 252 / 42%)" }}
-          data-wow-duration="2s" data-wow-delay="5s"
+         
         >
           Designing Your Aesthetic & Health Clinic
         </p>
