@@ -2,7 +2,6 @@ import EmailNotify from "@/components/Layout/EmailNotify";
 import React from "react";
 
 const ComingSoon = () => {
-  
   return (
     <div className=" relative min-h-[calc(100vh-80px)]">
     
