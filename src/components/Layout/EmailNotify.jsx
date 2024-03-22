@@ -61,15 +61,21 @@ const EmailNotify = () => {
     return () => clearTimeout(id);
   }, [showMssg]);
   return (
+  <>
+  <div className="absolute top-[40vh] z-30 left-5 rounded-[6px]  p-4 md:hidden block" style={{backgroundColor: "rgb(248 250 252 / 42%)"}}>
+   <p className="font-semibold text-white -top-60 italic">Designing Your Aesthetic & Health Clinic</p>
+      <h4 className="font-bold text-primary text-[30px] -top-24 italic">Coming Soon Shortly</h4>
+      </div>
     <div className=" absolute z-30 top-[60vh] left-10">
-      <span className="text-2xl   text-white  mb-5  font-semibold block ">
+      <span className="text-2xl md:block hidden  text-white  mb-5  font-semibold ">
         Stay tuned
       </span>
+      
       <div
-        className={`email-wrapper   group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center overflow-hidden       ease-linear   rounded-[30px] bg-primary   h-[56px]  w-fit  `}
+        className={`email-wrapper mt-5  group cursor-pointer  origin-top-left  duration-500  transition-all  flex items-center overflow-hidden       ease-linear   rounded-[30px] bg-primary   h-[56px]  w-fit  `}
         ref={input}
       >
-        <div className="flex px-[10px]   flex-shrink-0 items-center">
+        <div className="flex px-[10px]    flex-shrink-0 items-center">
           <div className="bg-white grid flex-shrink-0 place-items-center w-9 h-9 rounded-full">
             {isSuccess ? (
               <IoMdCheckmark size={20} />
@@ -140,6 +146,7 @@ const EmailNotify = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

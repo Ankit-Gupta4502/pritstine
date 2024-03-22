@@ -8,7 +8,7 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full h-full inset-0 object-cover md:block hidden"
+        className=" absolute w-full h-full  inset-0 object-cover md:block hidden"
         loop
         muted
         autoPlay
@@ -27,7 +27,7 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full h-full inset-0 object-cover md:hidden block"
+        className=" absolute w-full h-full p-0 inset-0 object-none md:hidden block"
         loop
         muted
         autoPlay
@@ -38,9 +38,11 @@ const ComingSoon = () => {
 
         {/* mobile video */}
         <source
-          src="/assets/opening.mp4"
+          src="/assets/opening3.mp4"
           type="video/mp4"
           media=""
+          width={100}
+          height={100}
         />
       </video>
     </div>
