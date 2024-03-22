@@ -8,20 +8,39 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full h-full inset-0 object-cover"
+        className=" absolute w-full h-full inset-0 object-cover md:block hidden"
         loop
         muted
         autoPlay
         preload="true"
       >
         {/* desktop default */}
-        <source src="/assets/coming_soon.mp4" type="video/mp4" />
+        <source src="/assets/Comming.mp4" type="video/mp4" media=""/>
+
+        {/* mobile video */}
+        {/* <source
+          src="/assets/opening.mp4"
+          type="video/mp4"
+          media=""
+        /> */}
+      </video>
+      <video
+        playsInline
+        controls={false}
+        className=" absolute w-full h-full inset-0 object-cover md:hidden block"
+        loop
+        muted
+        autoPlay
+        preload="true"
+      >
+        {/* desktop default */}
+        {/* <source src="/assets/Comming.mp4" type="video/mp4" media="md:block hidden"/> */}
 
         {/* mobile video */}
         <source
-          src="/assets/coming_soon.mp4"
+          src="/assets/opening.mp4"
           type="video/mp4"
-          media="(max-width:833px)"
+          media=""
         />
       </video>
     </div>
