@@ -63,15 +63,49 @@ const EmailNotify = () => {
   }, [showMssg]);
   return (
     <>
+      <style jsx>{`
+        .animated-box {          
+          left: 0;
+          animation: slideRight 1s forwards;
+        }
+
+        .animated-box1 {          
+          left: 0;
+          animation: slideRight 1s forwards;
+          animation-delay: .3s;
+          opacity : 0;
+        }
+        
+        @keyframes slideRight {
+          from {
+            transform: translateX(-100%);
+            opacity : 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity : 1;
+          }
+        }
+
+        @keyframes slideRight1 {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+      
       <div className="absolute top-[40vh] z-30 left-5   md:hidden block ">
         <p
-          className="font-semibold text-white -top-60 italic bg-slate-50  p-4 rounded-[6px]"
+          className="font-semibold text-white -top-60 italic bg-slate-50  p-4 rounded-[6px] animated-text animated-box"
           style={{ backgroundColor: "rgb(248 250 252 / 42%)" }}
          
         >
           Designing Your Aesthetic & Health Clinic
         </p>
-        <h4 className="font-bold leading-[30px] text-[#ffcf7f] mt-3 ml-3 text-[30px] -top-20 italic">
+        <h4 className="font-bold leading-[30px] text-[#ffcf7f] mt-3 ml-3 text-[30px] -top-20 italic animated-text animated-box1">
           Opening Shortly
         </h4>
       </div>
@@ -85,6 +119,7 @@ const EmailNotify = () => {
           ref={input}
         >
           <div className="flex px-[10px]    flex-shrink-0 items-center">
+
             <div className="bg-white grid flex-shrink-0 place-items-center w-9 h-9 rounded-full">
               {isSuccess ? (
                 <IoMdCheckmark size={20} />
@@ -95,7 +130,7 @@ const EmailNotify = () => {
                 />
               )}
             </div>
-
+            
             <div
               className={` ${
                 !startHover && showMssg
