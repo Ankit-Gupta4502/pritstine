@@ -8,7 +8,7 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full h-full  inset-0 object-cover md:block hidden"
+        className=" absolute w-full h-full  inset-0 object-cover sm:block hidden"
         loop
         muted
         autoPlay
@@ -27,7 +27,7 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full  object-cover p-0 inset-0  h-full inset-0 md:hidden block"
+        className=" absolute w-full  object-cover p-0 inset-0  h-full  sm:hidden block"
         loop
         muted
         autoPlay
