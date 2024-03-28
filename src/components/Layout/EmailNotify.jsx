@@ -63,7 +63,7 @@ const EmailNotify = () => {
   }, [showMssg]);
   return (
     <>
-      <style jsx>{`
+      {/* <style jsx>{`
         .animated-box {          
           left: 0;
           animation: slideRight 1s forwards;
@@ -95,9 +95,9 @@ const EmailNotify = () => {
             transform: translateX(0);
           }
         }
-      `}</style>
+      `}</style> */}
       
-      <div className="absolute top-[40vh] z-30 left-5   md:hidden block ">
+      {/* <div className="absolute top-[40vh] z-30 left-5   md:hidden block ">
         <p
           className="font-semibold text-white -top-60 italic bg-slate-50  p-4 rounded-[6px] animated-text animated-box"
           style={{ backgroundColor: "rgb(248 250 252 / 42%)" }}
@@ -108,8 +108,8 @@ const EmailNotify = () => {
         <h4 className="font-bold leading-[30px] text-[#ffcf7f] mt-3 ml-3 text-[30px] -top-20 italic animated-text animated-box1">
           Opening Shortly
         </h4>
-      </div>
-      <div className=" absolute z-30 top-[60vh] left-5 md:left-10">
+      </div> */}
+      <div className=" absolute z-30 bottom-16 md:top-[60vh] left-5 md:left-10">
         <span className="text-2xl md:block hidden  text-white  mb-5  font-semibold ">
           Stay tuned
         </span>

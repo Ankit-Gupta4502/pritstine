@@ -15,7 +15,7 @@ const ComingSoon = () => {
         preload="true"
       >
         {/* desktop default */}
-        <source src="/assets/Comming.mp4" type="video/mp4" media=""/>
+        <source src="/assets/coming_soon.mp4" type="video/mp4" media=""/>
 
         {/* mobile video */}
         {/* <source
@@ -27,7 +27,7 @@ const ComingSoon = () => {
       <video
         playsInline
         controls={false}
-        className=" absolute w-full h-full p-0 inset-0 object-none md:hidden block"
+        className=" absolute w-full  object-cover p-0 inset-0  h-full inset-0 md:hidden block"
         loop
         muted
         autoPlay
@@ -38,7 +38,7 @@ const ComingSoon = () => {
 
         {/* mobile video */}
         <source
-          src="/assets/opening3.mp4"
+          src="/assets/coming_soon_mobile.mp4"
           type="video/mp4"
           media=""
           width={100}
