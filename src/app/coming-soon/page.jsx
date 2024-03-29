@@ -15,7 +15,7 @@ const ComingSoon = () => {
         preload="true"
       >
         {/* desktop default */}
-        <source src="/assets/coming_soon.mp4" type="video/mp4" media=""/>
+        <source src="https://forhexabells.com/desktop-banner-video-pristine.mp4" type="video/mp4" media=""/>
 
         {/* mobile video */}
         {/* <source
@@ -41,8 +41,7 @@ const ComingSoon = () => {
           src="/assets/coming_soon_mobile.mp4"
           type="video/mp4"
           media=""
-          width={100}
-          height={100}
+         
         />
       </video>
     </div>
