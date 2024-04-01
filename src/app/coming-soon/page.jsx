@@ -38,7 +38,7 @@ const ComingSoon = () => {
 
         {/* mobile video */}
         <source
-          src="/assets/coming_soon_mobile.mp4"
+          src="https://forhexabells.com/mobile-banner_video_pristine.mp4"
           type="video/mp4"
           media=""
          
