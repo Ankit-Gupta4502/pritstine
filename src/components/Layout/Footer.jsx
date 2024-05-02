@@ -10,10 +10,8 @@ import useLayoutContext from "@/context/LayoutContext";
 import { usePathname } from "next/navigation";
 const Footer = () => {
   const { defaultLang } = useLayoutContext();
-  const path = usePathname();
-  if (path.includes("/coming-soon") || path === "/") {
-    return null;
-  }
+
+
   return (
     <>
       <div
